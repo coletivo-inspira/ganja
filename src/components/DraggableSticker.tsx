@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import type { UrbanStickerItem } from '../types/ganja';
+import { useTouchDragGate } from './useTouchDragGate';
 
 export interface DraggableStickerProps {
   sticker: UrbanStickerItem;
@@ -20,23 +21,29 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
     null
   );
 
+  const gate = useTouchDragGate<HTMLDivElement>();
+
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     onBringToFront?.(sticker.id);
-    draggingRef.current = true;
-    setIsDragging(true);
-    dragStartRef.current = {
-      startX: event.clientX,
-      startY: event.clientY,
-      origX: offset.x,
-      origY: offset.y,
-    };
-    if (typeof event.currentTarget.setPointerCapture === 'function') {
-      try {
-        event.currentTarget.setPointerCapture(event.pointerId);
-      } catch {
-        // Ignore in synthetic test environments
+    const target = event.currentTarget;
+    const { pointerId, clientX, clientY } = event;
+    gate.begin(event, () => {
+      draggingRef.current = true;
+      setIsDragging(true);
+      dragStartRef.current = {
+        startX: clientX,
+        startY: clientY,
+        origX: offset.x,
+        origY: offset.y,
+      };
+      if (typeof target.setPointerCapture === 'function') {
+        try {
+          target.setPointerCapture(pointerId);
+        } catch {
+          // Ignore in synthetic test environments
+        }
       }
-    }
+    });
   };
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -47,7 +54,7 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
       setGlossPos({ x: Math.round(relX), y: Math.round(relY) });
     }
 
-    if (!draggingRef.current || !dragStartRef.current) return;
+    if (!gate.shouldTrack(event) || !draggingRef.current || !dragStartRef.current) return;
     const dx = event.clientX - dragStartRef.current.startX;
     const dy = event.clientY - dragStartRef.current.startY;
     setOffset({
@@ -57,6 +64,7 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
   };
 
   const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    gate.end();
     if (!draggingRef.current) return;
     draggingRef.current = false;
     setIsDragging(false);
@@ -72,6 +80,7 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
 
   return (
     <div
+      ref={gate.ref}
       data-testid={`draggable-sticker-${sticker.id}`}
       data-sticker-code={sticker.code}
       data-linked-look={sticker.linkedLookCode}
@@ -84,18 +93,19 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
-      className="absolute select-none cursor-grab active:cursor-grabbing brutal-border brutal-shadow"
+      className="absolute select-none cursor-grab active:cursor-grabbing brutal-border brutal-shadow [--sticker-scale:0.75] md:[--sticker-scale:1]"
       style={{
         left: `${sticker.initialX}%`,
         top: `${sticker.initialY}%`,
         zIndex: isDragging ? 45 : zIndex,
-        transform: `translate3d(${offset.x}px, ${offset.y}px, 0) rotate(${sticker.initialRotation}deg)`,
+        transform: `translate3d(${offset.x}px, ${offset.y}px, 0) rotate(${sticker.initialRotation}deg) scale(var(--sticker-scale, 1))`,
         backgroundColor: sticker.primaryColor,
         color: sticker.textColor,
         borderRadius: '0px',
         border: '2px solid #111111',
         boxShadow: isDragging ? '6px 6px 0px #111111' : '4px 4px 0px #111111',
-        touchAction: 'none',
+        touchAction: 'pan-y',
+        WebkitTouchCallout: 'none',
         transitionDuration: '0ms',
         maxWidth: 'min(78%, 240px)',
       }}

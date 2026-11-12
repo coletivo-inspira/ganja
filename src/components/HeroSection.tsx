@@ -9,8 +9,15 @@ export const HeroSection: React.FC = () => {
     URBAN_STICKERS.map((s) => s.id)
   );
 
+  const [resetKey, setResetKey] = useState(0);
+
   const bringToFront = (id: string) => {
     setStickerOrder((prev) => [...prev.filter((item) => item !== id), id]);
+  };
+
+  const resetStickers = () => {
+    setStickerOrder(URBAN_STICKERS.map((s) => s.id));
+    setResetKey((key) => key + 1);
   };
 
   const heroLooks = LOOKS_CATALOG.slice(0, 6);
@@ -90,9 +97,20 @@ export const HeroSection: React.FC = () => {
           className="lg:col-span-5 relative min-h-[620px] max-h-[820px] overflow-y-auto bg-[#1A1A1A] text-[#F4F3EF] p-4 sm:p-6"
           style={{ borderRadius: '0px' }}
         >
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#F4F3EF] font-mono-tech text-xs">
+          <div className="relative z-50 flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-[#F4F3EF] font-mono-tech text-xs">
             <span>HERO SCROLL GALLERY // COLEÇÃO GANJA STAR</span>
-            <span className="text-[#F5C400]">[STICKERS ARRASTÁVEIS]</span>
+            <span className="flex flex-wrap items-center gap-2">
+              <span className="text-[#F5C400]">[STICKERS ARRASTÁVEIS]</span>
+              <button
+                type="button"
+                data-testid="reset-stickers"
+                onClick={resetStickers}
+                className="brutal-interactive px-2 py-1 bg-[#F4F3EF] text-[#111111] border border-[#F4F3EF] font-mono-tech text-[11px] font-bold cursor-pointer hover:bg-[#F5C400]"
+                style={{ borderRadius: '0px', transitionDuration: '0ms' }}
+              >
+                [RESETAR MESA // LIMPAR STICKERS]
+              </button>
+            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
@@ -125,7 +143,7 @@ export const HeroSection: React.FC = () => {
             const orderIdx = stickerOrder.indexOf(sticker.id);
             return (
               <DraggableSticker
-                key={sticker.id}
+                key={`${sticker.id}-${resetKey}`}
                 sticker={sticker}
                 zIndex={20 + (orderIdx >= 0 ? orderIdx : 0)}
                 onBringToFront={bringToFront}
