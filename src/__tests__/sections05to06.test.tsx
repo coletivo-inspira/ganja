@@ -83,5 +83,12 @@ describe('Sections 05–06 — Lookbook, Technical Drawer, Moodboard, Contact', 
     expect(screen.getByTestId('footer-link-email').getAttribute('href') || '').toMatch(
       /mailto:gandraisaque@hotmail\.com/i
     );
+
+    const mount = screen.getByTestId('coletivo-inspira-orb');
+    expect(mount).toHaveAttribute('data-inspira-orb-mount');
+    const copy = screen.getByRole('link', { name: 'Coletivo Inspira' });
+    expect(copy).toHaveAttribute('href', 'https://inspira.dev.br/');
+    expect(copy).toHaveAttribute('target', '_blank');
+    expect(copy.getAttribute('rel') || '').toContain('noopener');
   });
 });

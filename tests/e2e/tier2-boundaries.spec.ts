@@ -20,6 +20,7 @@ test.describe('F01 Boundaries — Structural Grid, Zero Radius & Viewport Extrem
       const nodes = Array.from(document.querySelectorAll('[data-testid], header, section, button, a'));
       const violations: string[] = [];
       for (const el of nodes) {
+        if (el.closest('.inspira-orb')) continue;
         const s = window.getComputedStyle(el);
         if (
           s.borderRadius !== '0px' ||
