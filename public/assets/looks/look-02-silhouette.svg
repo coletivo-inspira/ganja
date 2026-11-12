@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 02 - CALCA CARGO + CAMISETA OZEMPIC (Silhueta)">
+  <defs>
+    <pattern id="grid-02" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="800" fill="#FFFFFF"/>
+  <rect x="16" y="16" width="568" height="768" fill="url(#grid-02)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="58" fill="#111111"/>
+  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 02 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#D92B2B" stroke="#F4F3EF" stroke-width="1"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
+  
+        <g stroke="#111111" stroke-width="3">
+          <path d="M180,165 L420,165 L465,255 L405,280 L385,230 L385,385 L215,385 L215,230 L195,280 L135,255 Z" fill="#FFFFFF"/>
+          <rect x="232" y="210" width="136" height="92" fill="#D92B2B" stroke="#111111" stroke-width="2"/>
+          <text x="300" y="245" text-anchor="middle" font-family=" monospace" font-weight="700" font-size="13" fill="#FFFFFF" stroke="none">GOD SAVE BEARS</text>
+          <text x="300" y="268" text-anchor="middle" font-family=" monospace" font-weight="700" font-size="13" fill="#F5C400" stroke="none">FROM OZEMPIC</text>
+          <path d="M215,385 L385,385 L418,650 L322,650 L300,470 L278,650 L182,650 Z" fill="#1A1A1A"/>
+          <rect x="182" y="450" width="52" height="85" fill="#F5C400" stroke="#111111" stroke-width="2"/>
+          <rect x="366" y="450" width="52" height="85" fill="#F5C400" stroke="#111111" stroke-width="2"/>
+        </g>
+        
+  
+  <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">CALCA CARGO + CAMISETA OZEMPIC</text>
+  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">MANIFESTO IRONICO "GOD SAVE BEARS FROM OZEMPIC"</text>
+</svg>

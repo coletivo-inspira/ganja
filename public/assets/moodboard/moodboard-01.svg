@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="PLACA AUTOMOTIVA GFM / GSH-2168">
+  <rect width="420" height="300" fill="#008055" stroke="#111111" stroke-width="4"/>
+  <rect x="14" y="14" width="392" height="40" fill="#111111"/>
+  <text x="26" y="40" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#F4F3EF">ARQUIVO ARE.NA // LOOK 03</text>
+  <rect x="24" y="84" width="372" height="120" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
+  <text x="210" y="140" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#008055">PLACA AUTOMOTIVA GFM / GSH-2168</text>
+  <text x="210" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#008055">SINALIZACAO VIARIA // CENTRO SP</text>
+  <text x="24" y="268" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#F4F3EF">MESA DE LUZ DIGITAL // GANJA STUDIO SP</text>
+</svg>

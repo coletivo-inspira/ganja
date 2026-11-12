@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 08 - VESTIDO DE RETALHOS (Silhueta)">
+  <defs>
+    <pattern id="grid-08" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="800" fill="#FFFFFF"/>
+  <rect x="16" y="16" width="568" height="768" fill="url(#grid-08)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="58" fill="#111111"/>
+  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 08 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#D92B2B" stroke="#F4F3EF" stroke-width="1"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
+  
+        <g stroke="#111111" stroke-width="3">
+          <polygon points="235,160 365,160 380,290 220,290" fill="#D92B2B"/>
+          <polygon points="220,290 380,290 420,450 180,450" fill="#111111"/>
+          <polygon points="180,450 420,450 455,635 155,610" fill="#008055"/>
+          <line x1="220" y1="290" x2="380" y2="290" stroke="#F5C400" stroke-width="4"/>
+          <line x1="180" y1="450" x2="420" y2="450" stroke="#F4F3EF" stroke-width="4" stroke-dasharray="8,4"/>
+        </g>
+        
+  
+  <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">VESTIDO DE RETALHOS</text>
+  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">DRAPEADO ESCULTURAL DITADO PELA GEOMETRIA DO DESCARTE</text>
+</svg>

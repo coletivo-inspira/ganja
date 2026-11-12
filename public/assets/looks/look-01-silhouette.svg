@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 01 - MACACAO CARGO (Silhueta)">
+  <defs>
+    <pattern id="grid-01" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="800" fill="#FFFFFF"/>
+  <rect x="16" y="16" width="568" height="768" fill="url(#grid-01)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="58" fill="#111111"/>
+  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 01 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#F5C400" stroke="#F4F3EF" stroke-width="1"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
+  
+        <g stroke="#111111" stroke-width="3" fill="none">
+          <path d="M210,160 L390,160 L435,240 L395,260 L375,215 L375,380 L405,650 L325,650 L300,455 L275,650 L195,650 L225,380 L225,215 L205,260 L165,240 Z" fill="#1A1A1A"/>
+          <line x1="300" y1="160" x2="300" y2="455" stroke="#F5C400" stroke-width="3" stroke-dasharray="6,4"/>
+          <rect x="235" y="220" width="50" height="58" fill="#F5C400" stroke="#111111" stroke-width="2"/>
+          <rect x="315" y="220" width="50" height="58" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
+          <rect x="195" y="425" width="48" height="80" fill="#F5C400" stroke="#111111" stroke-width="2"/>
+          <rect x="357" y="425" width="48" height="80" fill="#F5C400" stroke="#111111" stroke-width="2"/>
+          <rect x="225" y="362" width="150" height="22" fill="#D92B2B" stroke="#111111" stroke-width="2"/>
+        </g>
+        
+  
+  <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">MACACAO CARGO</text>
+  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">ENGENHARIA INDUSTRIAL SENAI // SARJA PESADA 100% ALGODAO</text>
+</svg>
