@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CREATOR_PROFILE, INSTAGRAM_STRIP_ITEMS } from '../data/creator';
 import { withBase } from '../withBase';
 
+const INSPIRA_ORB_SRC = 'https://brandbook.inspira.dev.br/assets/js/inspira-orb.js';
+
+function loadInspiraOrb(): void {
+  const host = window as Window & { __inspiraOrbLoaded?: boolean };
+  if (host.__inspiraOrbLoaded) return;
+  if (document.querySelector(`script[src="${INSPIRA_ORB_SRC}"]`)) return;
+  const script = document.createElement('script');
+  script.src = INSPIRA_ORB_SRC;
+  script.defer = true;
+  script.setAttribute('data-href', 'https://inspira.dev.br/');
+  script.setAttribute('data-mount', '[data-inspira-orb-mount]');
+  document.body.appendChild(script);
+}
+
 export const CreatorContactFooter: React.FC = () => {
+  useEffect(() => {
+    loadInspiraOrb();
+  }, []);
+
   return (
     <section
       id="contato-06"
@@ -159,6 +177,18 @@ export const CreatorContactFooter: React.FC = () => {
         <div className="pt-6 flex flex-wrap items-center justify-between gap-4 font-mono-tech text-xs text-[#F4F3EF]/70">
           <span>© 2022–2026 GANJA STUDIO (@ganjastudio.br) — ISAQUE GANDRA (@isaquex)</span>
           <span>SÃO PAULO // UFMG + SENAI // BÉTON BRUT DIGITAL</span>
+        </div>
+
+        <div className="footer-seal">
+          <div className="footer-orb" data-inspira-orb-mount data-testid="coletivo-inspira-orb" />
+          <hr className="footer-orb-rule" />
+          <p className="footer-copy">
+            © {new Date().getFullYear()}{' '}
+            <a href="https://inspira.dev.br/" target="_blank" rel="noopener noreferrer">
+              Coletivo Inspira
+            </a>
+            . Todos os direitos reservados.
+          </p>
         </div>
       </footer>
     </section>

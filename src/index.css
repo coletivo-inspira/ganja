@@ -28,9 +28,15 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  border-radius: 0px !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+}
+
+/* The +INSPIRA network seal keeps the radius the official script draws. */
+*:not(.inspira-orb):not(.inspira-orb *),
+*:not(.inspira-orb):not(.inspira-orb *)::before,
+*:not(.inspira-orb):not(.inspira-orb *)::after {
+  border-radius: 0px !important;
 }
 
 html,
@@ -205,4 +211,43 @@ body {
   .animate-brutal-marquee {
     animation: none;
   }
+}
+
+/* Closing Coletivo seal. The orb's own glass, color, and plus stay untouched. */
+.footer-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+  background: #f4f3ef;
+  color: #111111;
+}
+
+.footer-orb {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1.25rem;
+}
+
+.footer-orb-rule {
+  width: min(100%, 16rem);
+  border: 0;
+  border-top: 1px solid #111111;
+  margin: 0;
+}
+
+.footer-copy {
+  margin: 0.75rem 0 1.25rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #111111;
+}
+
+.footer-copy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

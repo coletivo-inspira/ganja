@@ -1155,4 +1155,48 @@ test.describe('F20 — Section 06 — Creator Catalog Card, B&W-to-Color Instagr
     await expect(linkEmail).toBeVisible();
     await expect(linkEmail).toHaveAttribute('href', /mailto:gandraisaque@hotmail\.com/i);
   });
+
+  test('F20.6: Footer closes with the Coletivo Inspira mount and copyright link', async ({ page }) => {
+    await page.goto('/');
+    const footer = page.getByTestId('brutalist-footer');
+    await footer.scrollIntoViewIfNeeded();
+
+    const mount = footer.locator('[data-inspira-orb-mount]');
+    await expect(mount).toHaveCount(1);
+    await expect(mount).toHaveAttribute('data-testid', 'coletivo-inspira-orb');
+
+    const copy = footer.locator('p.footer-copy a[href="https://inspira.dev.br/"]');
+    await expect(copy).toBeVisible();
+    await expect(copy).toHaveAttribute('href', 'https://inspira.dev.br/');
+    await expect(copy).toHaveAttribute('target', '_blank');
+    await expect(copy).toHaveAttribute('rel', /noopener/);
+    await expect(copy).toContainText('Coletivo Inspira');
+
+    // The official script is fetched from brandbook.inspira.dev.br. If that
+    // network is blocked, the mount and copyright checks above still stand.
+    const orb = mount.locator('a.inspira-orb.inspira-orb--inline');
+    const scriptLoaded = await orb
+      .waitFor({ state: 'attached', timeout: 8000 })
+      .then(() => true)
+      .catch(() => false);
+    if (!scriptLoaded) {
+      test.info().annotations.push({
+        type: 'note',
+        description: 'brandbook.inspira.dev.br did not load; mounted-orb checks were skipped',
+      });
+      return;
+    }
+
+    await expect(orb).toHaveAttribute('href', 'https://inspira.dev.br/');
+    const placement = await orb.evaluate((el) => {
+      const style = window.getComputedStyle(el);
+      return {
+        position: style.position,
+        backdropFilter: style.backdropFilter || 'none',
+      };
+    });
+    expect(placement.position).not.toBe('fixed');
+    expect(placement.backdropFilter.toLowerCase()).not.toContain('blur(');
+    await expect(orb).toHaveCount(1);
+  });
 });

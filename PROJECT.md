@@ -9,6 +9,7 @@
   - **NO Rounded Corners**: Every container, card, button, badge, drawer, and input MUST have `border-radius: 0px`.
   - **NO Diffuse Shadows or Pastel Gradients**: All elevated elements use hard zero-blur drop shadows (`4px 4px 0px #111111`) and exposed `1px solid #111111` structural grid borders.
   - **NO Slow Opacity Fades on Interactive Controls**: State transitions on menus, buttons, lookbook silhouette/macro toggles, and the B&W-to-color Instagram strip must be dry and instantaneous (`0ms` / stepped), paired with weighted inertial page scrolling (`Lenis`).
+  - **Network seal exception**: The **+INSPIRA orb** is the Coletivo Inspira network seal. It is drawn on canvas in the closing footer strip and is not restyled to fit these brutalist rules. Its glass, colors, and plus sign stay as `inspira-orb.js` draws them. `border-radius: 0` does not apply to `.inspira-orb` or its descendants. `backdrop-filter: blur` stays forbidden everywhere, including the seal.
 - **Tech Stack**:
   - **Framework & Bundler**: Vite + React 19 + TypeScript (initialized with `npm` in `/home/antigravity/coletivo-inspira/ganja`).
   - **Styling**: Vanilla CSS + Tailwind CSS custom design tokens in `src/index.css` with Google Fonts (`Syne` 800 ExtraBold, `Archivo Black` / `Bebas Neue`, `Plus Jakarta Sans` 400/600, `Space Mono` 400/700).
