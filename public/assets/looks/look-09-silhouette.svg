@@ -1,25 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 09 - CONJUNTO EXPERIMENTAL GANJA STAR (Silhueta)">
-  <defs>
-    <pattern id="grid-09" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
-    </pattern>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 09 silhouette">
   <rect width="600" height="800" fill="#FFFFFF"/>
-  <rect x="16" y="16" width="568" height="768" fill="url(#grid-09)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="768" fill="none" stroke="#111111" stroke-width="2"/>
+  <path d="M16,56 H584 M56,16 V784 M544,16 V784" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.35"/>
   <rect x="16" y="16" width="568" height="58" fill="#111111"/>
-  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 09 // GANJA STAR</text>
-  <rect x="392" y="28" width="176" height="34" fill="#008055" stroke="#F4F3EF" stroke-width="1"/>
-  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
-  
-        <g stroke="#111111" stroke-width="3">
-          <path d="M175,165 L425,165 L455,295 L385,310 L385,385 L215,385 L215,310 L145,295 Z" fill="#111111"/>
-          <path d="M215,385 L385,385 L415,645 L320,645 L300,465 L280,645 L185,645 Z" fill="#008055"/>
-          <circle cx="300" cy="265" r="44" fill="#F5C400" stroke="#111111" stroke-width="3"/>
-          <text x="300" y="271" text-anchor="middle" font-family="monospace" font-weight="700" font-size="16" fill="#111111" stroke="none">G★NJ★</text>
+  <text x="34" y="52" font-family="Space Mono, monospace" font-weight="700" font-size="18" fill="#F4F3EF">LOOK 09 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#008055"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">100% CONCLUIDO</text>
+  <g stroke="#111111" stroke-width="3" fill="none">
+        <path d="M175,165 L425,165 L455,295 L385,310 L385,385 L215,385 L215,310 L145,295 Z" fill="#111111"/>
+        <path d="M215,385 L385,385 L415,645 L320,645 L300,465 L280,645 L185,645 Z" fill="#008055"/>
+        <rect x="248" y="220" width="104" height="70" fill="#F5C400"/>
+        <text x="300" y="262" text-anchor="middle" font-family="Space Mono, monospace" font-size="16" font-weight="700" fill="#111111" stroke="none">G*NJ*</text>
+        <path d="M175,250 H230 M370,250 H425" fill="none" stroke="#F4F3EF" stroke-width="6"/>
         </g>
-        
   
   <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
-  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">CONJUNTO EXPERIMENTAL GANJA STAR</text>
-  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">MATRIZ UFMG + SENAI // SILHUETA DE PALCO E ASFALTO</text>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="#111111">CONJUNTO EXPERIMENTAL</text>
+  <text x="34" y="768" font-family="Space Mono, monospace" font-size="11" fill="#111111">MATRIZ UFMG + SENAI</text>
 </svg>

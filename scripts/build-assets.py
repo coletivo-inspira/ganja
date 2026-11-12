@@ -535,12 +535,13 @@ def generate_instagram_plates(star_d: str) -> None:
 
 
 def main() -> None:
-    star_d = extract_brand_mark()
-    generate_look_plates(star_d)
-    generate_stage_plates(star_d)
-    generate_moodboard_plates()
-    generate_instagram_plates(star_d)
-    print('SUCCESS: Generated brand, looks (20), stage (4), moodboard (6), and instagram (6) assets.')
+    import sys
+    from editorial_plates import write_editorial_plates
+
+    if '--plates-only' not in sys.argv:
+        extract_brand_mark()
+    write_editorial_plates(ASSETS_DIR)
+    print('SUCCESS: editorial plates written (looks, stage, moodboard, instagram).')
 
 
 if __name__ == '__main__':

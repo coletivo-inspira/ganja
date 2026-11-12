@@ -5,6 +5,15 @@ import type { StagePerformanceItem } from '../types/ganja';
 export const StageProofSection: React.FC = () => {
   const [activeStage, setActiveStage] = useState<StagePerformanceItem>(STAGE_PERFORMANCES[0]);
   const [isHoveringRow, setIsHoveringRow] = useState<boolean>(false);
+  const [pointer, setPointer] = useState<{ x: number; y: number }>({ x: 24, y: 24 });
+
+  const trackPointer = (event: React.MouseEvent) => {
+    const width = 360;
+    const height = 300;
+    const x = Math.max(8, Math.min(event.clientX + 18, window.innerWidth - width - 8));
+    const y = Math.max(56, Math.min(event.clientY + 18, window.innerHeight - height - 8));
+    setPointer({ x, y });
+  };
 
   return (
     <section
@@ -44,10 +53,12 @@ export const StageProofSection: React.FC = () => {
                 data-active={isSelected ? 'true' : 'false'}
                 tabIndex={0}
                 role="button"
-                onMouseEnter={() => {
+                onMouseEnter={(event) => {
                   setActiveStage(item);
                   setIsHoveringRow(true);
+                  trackPointer(event);
                 }}
+                onMouseMove={trackPointer}
                 onMouseLeave={() => setIsHoveringRow(false)}
                 onFocus={() => {
                   setActiveStage(item);
@@ -80,13 +91,26 @@ export const StageProofSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Stage Rollover Preview Card */}
+        {/* Cursor-following Stage Rollover Preview — hidden until a row is inspected */}
         <div
           data-testid="stage-rollover-preview"
           data-artist-id={activeStage.id}
           data-hovering={isHoveringRow ? 'true' : 'false'}
-          className="lg:col-span-5 bg-[#1A1A1A] border border-[#F4F3EF] p-4 brutal-shadow-inv"
-          style={{ borderRadius: '0px' }}
+          aria-hidden={!isHoveringRow}
+          className={`pointer-events-none bg-[#1A1A1A] border border-[#F4F3EF] p-4 brutal-shadow-inv ${
+            isHoveringRow ? 'block' : 'hidden'
+          }`}
+          style={{
+            borderRadius: '0px',
+            position: 'fixed',
+            left: pointer.x,
+            top: pointer.y,
+            width: 360,
+            maxWidth: 'calc(100vw - 16px)',
+            zIndex: 40,
+            pointerEvents: 'none',
+            transitionDuration: '0ms',
+          }}
         >
           <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#F4F3EF] font-mono-tech text-xs">
             <span className="text-[#F5C400] font-bold">STAGE ROLLOVER PREVIEW</span>

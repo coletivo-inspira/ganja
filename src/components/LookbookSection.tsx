@@ -40,7 +40,7 @@ export const LookbookSection: React.FC = () => {
       {/* 3-Column Modular Grid */}
       <div
         data-testid="lookbook-grid"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full border-l border-[#111111] bg-[#FFFFFF]"
+        className="lookbook-grid grid w-full border-l border-[#111111] bg-[#FFFFFF]"
         style={{ borderRadius: '0px' }}
       >
         {LOOKS_CATALOG.map((look) => (

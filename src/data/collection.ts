@@ -1,4 +1,5 @@
 import type { LookItem } from '../types/ganja';
+import { withBase } from '../withBase';
 
 export const LOOKS_CATALOG: LookItem[] = [
   {
@@ -21,8 +22,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Modelagem utilitária de engenharia industrial desenvolvida na matriz técnica do Senai, articulando bolsos cargo de alta capacidade e costuras aparentes rebatidas que expõem o esqueleto funcional da peça.',
-    silhouetteImage: '/assets/looks/look-01-silhouette.svg',
-    macroImage: '/assets/looks/look-01-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-01-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-01-macro.svg'),
     featuredStickers: ['G★NJ★'],
     inquirySubject: 'Encomenda / Consulta Direta — LOOK 01 (Macacão Cargo) | GANJA STAR',
   },
@@ -46,8 +47,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Cruza o manifesto gráfico irônico "GOD SAVE BEARS FROM OZEMPIC" — crítica direta à padronização farmacêutica dos corpos — com a arquitetura volumétrica da Calça Cargo de múltiplos compartimentos.',
-    silhouetteImage: '/assets/looks/look-02-silhouette.svg',
-    macroImage: '/assets/looks/look-02-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-02-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-02-macro.svg'),
     featuredStickers: ['GOD SAVE BEARS FROM OZEMPIC'],
     inquirySubject: 'Encomenda / Consulta Direta — LOOK 02 (Calça Cargo + Camiseta Ozempic) | GANJA STAR',
   },
@@ -71,8 +72,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Engenharia reversa do vestuário 1-of-1 via técnica de upcycling: recortes de tecidos descartados e códigos gráficos de rodovia ("Não me siga estou perdida" e placa GSH-2168) ditam estruturalmente o bloco da peça em processo no Ateliê Vivo (80% CONCLUIDO).',
-    silhouetteImage: '/assets/looks/look-03-silhouette.svg',
-    macroImage: '/assets/looks/look-03-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-03-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-03-macro.svg'),
     featuredStickers: ['Não me siga estou perdida', 'GSH-2168'],
     inquirySubject: 'Reserva de Ateliê Vivo — LOOK 03 (Conjunto "Adesivos de Caminhão" - 80% CONCLUIDO) | GANJA STAR',
   },
@@ -96,8 +97,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Tensão entre a silhueta justa da Regatinha G★NJ★ e o volume armado do Short Guerrilha. Registrado em fase final de acabamento no laboratório experimental da marca (95% CONCLUIDO).',
-    silhouetteImage: '/assets/looks/look-04-silhouette.svg',
-    macroImage: '/assets/looks/look-04-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-04-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-04-macro.svg'),
     featuredStickers: ['G★NJ★'],
     inquirySubject: 'Reserva de Ateliê Vivo — LOOK 04 (Short Guerrilha + Regatinha Ganja Star - 95% CONCLUIDO) | GANJA STAR',
   },
@@ -121,8 +122,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Materializa explicitamente o posicionamento político e contracultural do trocadilho Gandra -> Ganja, combinando modelagem boxy de alto volume com o selo gráfico que simula pesagem de substâncias (GANJA 25G).',
-    silhouetteImage: '/assets/looks/look-05-silhouette.svg',
-    macroImage: '/assets/looks/look-05-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-05-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-05-macro.svg'),
     featuredStickers: ['GANJA 25G'],
     inquirySubject: 'Encomenda / Consulta Direta — LOOK 05 (Moletom Legalize Já) | GANJA STAR',
   },
@@ -146,8 +147,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Peça única (1-of-1) de engenharia reversa na qual a geometria irregular dos retalhos de couro e o contraste tátil extremo com a pelúcia determinam o desenho dos recortes e o volume escultural do conjunto.',
-    silhouetteImage: '/assets/looks/look-06-silhouette.svg',
-    macroImage: '/assets/looks/look-06-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-06-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-06-macro.svg'),
     featuredStickers: ['G★NJ★'],
     inquirySubject: 'Aquisição Peça Única 1/1 — LOOK 06 (Retalhos de Couro e Pelúcia) | GANJA STAR',
   },
@@ -171,8 +172,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Reconstrução têxtil 1-of-1 baseada no conceito béton brut (valorização do material "as found"): cada fragmento de couro garimpado preserva suas marcas originais e é travado por pespontos aparentes de precisão industrial.',
-    silhouetteImage: '/assets/looks/look-07-silhouette.svg',
-    macroImage: '/assets/looks/look-07-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-07-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-07-macro.svg'),
     featuredStickers: ['GSH-2168'],
     inquirySubject: 'Aquisição Peça Única 1/1 — LOOK 07 (Conjunto de Retalhos de Couro) | GANJA STAR',
   },
@@ -196,8 +197,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Síntese da formação na Escola de Belas Artes da UFMG e no Senai: o caimento assimétrico do vestido emerge diretamente da montagem anatômica de sobras têxteis sobre o manequim.',
-    silhouetteImage: '/assets/looks/look-08-silhouette.svg',
-    macroImage: '/assets/looks/look-08-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-08-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-08-macro.svg'),
     featuredStickers: ['G★NJ★'],
     inquirySubject: 'Aquisição Peça Única 1/1 — LOOK 08 (Vestido de Retalhos) | GANJA STAR',
   },
@@ -221,8 +222,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Conjunto autoral concebido para transitar entre o asfalto do centro de São Paulo e a coreografia de grandes palcos, combinando liberdade de movimento com linhas arquitetônicas rigorosas.',
-    silhouetteImage: '/assets/looks/look-09-silhouette.svg',
-    macroImage: '/assets/looks/look-09-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-09-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-09-macro.svg'),
     featuredStickers: ['G★NJ★'],
     inquirySubject: 'Encomenda / Consulta Direta — LOOK 09 (Conjunto Ganja Star) | GANJA STAR',
   },
@@ -246,8 +247,8 @@ export const LOOKS_CATALOG: LookItem[] = [
     ],
     upcyclingTechnique:
       'Fechamento monumental da proposta de desfile Casa de Criadores (CDC): estudo de hiper-volume superior na Jaqueta Puffer contraposto à precisão utilitária da Bermuda Cargo e do Boné Ganja Star.',
-    silhouetteImage: '/assets/looks/look-10-silhouette.svg',
-    macroImage: '/assets/looks/look-10-macro.svg',
+    silhouetteImage: withBase('/assets/looks/look-10-silhouette.svg'),
+    macroImage: withBase('/assets/looks/look-10-macro.svg'),
     featuredStickers: ['GSH-2168', 'G★NJ★'],
     inquirySubject: 'Encomenda / Consulta Direta — LOOK 10 (Jaqueta Puffer + Bermuda Cargo + Boné) | GANJA STAR',
   },

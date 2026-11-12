@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="GARIMPO RETALHOS COURO &amp; PELUCIA">
-  <rect width="420" height="300" fill="#1A1A1A" stroke="#111111" stroke-width="4"/>
-  <rect x="14" y="14" width="392" height="40" fill="#111111"/>
-  <text x="26" y="40" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#F4F3EF">ARQUIVO ARE.NA // LOOK 06</text>
-  <rect x="24" y="84" width="372" height="120" fill="#D92B2B" stroke="#111111" stroke-width="2"/>
-  <text x="210" y="140" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#1A1A1A">GARIMPO RETALHOS COURO &amp; PELUCIA</text>
-  <text x="210" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#1A1A1A">DESCARTES TEXTEIS // CENTRO DE SP</text>
-  <text x="24" y="268" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#D92B2B">MESA DE LUZ DIGITAL // GANJA STUDIO SP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="moodboard-04">
+  
+          <rect width="420" height="300" fill="#1A1A1A" stroke="#111111" stroke-width="4"/>
+          <polygon points="40,70 190,60 210,200 50,210" fill="#111111" stroke="#F5C400" stroke-width="3"/>
+          <polygon points="200,80 360,90 340,210 180,190" fill="#D92B2B" stroke="#111111" stroke-width="3"/>
+          <circle cx="120" cy="140" r="22" fill="#F4F3EF"/>
+          <circle cx="150" cy="160" r="16" fill="#F5C400"/>
+          <circle cx="280" cy="150" r="14" fill="#F4F3EF"/>
+          <text x="24" y="270" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#F4F3EF">RETALHOS COURO + PELUCIA // LOOK 06</text>
 </svg>

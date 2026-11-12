@@ -1,28 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 06 - RETALHOS DE COURO E PELUCIA (Silhueta)">
-  <defs>
-    <pattern id="grid-06" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
-    </pattern>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 06 silhouette">
   <rect width="600" height="800" fill="#FFFFFF"/>
-  <rect x="16" y="16" width="568" height="768" fill="url(#grid-06)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="768" fill="none" stroke="#111111" stroke-width="2"/>
+  <path d="M16,56 H584 M56,16 V784 M544,16 V784" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.35"/>
   <rect x="16" y="16" width="568" height="58" fill="#111111"/>
-  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 06 // GANJA STAR</text>
-  <rect x="392" y="28" width="176" height="34" fill="#D92B2B" stroke="#F4F3EF" stroke-width="1"/>
-  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
-  
-        <g stroke="#111111" stroke-width="3">
-          <path d="M185,165 L300,165 L300,390 L210,390 L165,280 Z" fill="#111111"/>
-          <path d="M300,165 L415,165 L435,280 L390,390 L300,390 Z" fill="#D92B2B" stroke-dasharray="4,2"/>
-          <path d="M210,390 L300,390 L300,645 L195,645 Z" fill="#D92B2B"/>
-          <path d="M300,390 L390,390 L405,645 L300,645 Z" fill="#1A1A1A"/>
-          <line x1="300" y1="165" x2="300" y2="645" stroke="#F5C400" stroke-width="4" stroke-dasharray="8,4"/>
-          <rect x="230" y="250" width="140" height="36" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
-          <text x="300" y="273" text-anchor="middle" font-family="monospace" font-weight="700" font-size="12" fill="#111111" stroke="none">COURO + PELUCIA 1/1</text>
+  <text x="34" y="52" font-family="Space Mono, monospace" font-weight="700" font-size="18" fill="#F4F3EF">LOOK 06 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#D92B2B"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">100% CONCLUIDO</text>
+  <g stroke="#111111" stroke-width="3" fill="none">
+        <path d="M185,165 L300,165 L300,390 L210,390 L165,280 Z" fill="#111111"/>
+        <path d="M300,165 L415,165 L435,280 L390,390 L300,390 Z" fill="#D92B2B"/>
+        <path d="M210,390 L300,390 L300,645 L195,645 Z" fill="#D92B2B"/>
+        <path d="M300,390 L390,390 L405,645 L300,645 Z" fill="#1A1A1A"/>
+        <path d="M300,165 V645" fill="none" stroke="#F5C400" stroke-width="4" stroke-dasharray="8,4"/>
+        <circle cx="240" cy="250" r="10" fill="#F4F3EF"/>
+        <circle cx="250" cy="270" r="12" fill="#F4F3EF"/>
+        <circle cx="360" cy="240" r="8" fill="#F5C400"/>
+        <rect x="230" y="300" width="140" height="28" fill="#F4F3EF"/>
+        <text x="300" y="319" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" font-weight="700" fill="#111111" stroke="none">COURO + PELUCIA</text>
         </g>
-        
   
   <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
-  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">RETALHOS DE COURO E PELUCIA</text>
-  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">ENGENHARIA REVERSA 1/1 // COURO RECICLADO + PELUCIA SINTETICA</text>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="#111111">RETALHOS DE COURO E PELUCIA</text>
+  <text x="34" y="768" font-family="Space Mono, monospace" font-size="11" fill="#111111">ENGENHARIA REVERSA 1/1</text>
 </svg>

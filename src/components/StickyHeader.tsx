@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NAV_CELLS } from '../data/creator';
 import type { NavCellItem } from '../types/ganja';
+import { withBase } from '../withBase';
 
 export interface StickyHeaderProps {
   onNavigate?: (targetSectionId: string) => void;
@@ -29,7 +30,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
   return (
     <header
       data-testid="sticky-header"
-      className="sticky top-0 z-50 w-full bg-[#F4F3EF] text-[#111111] border-b border-[#111111]"
+      className="sticky top-0 z-[80] w-full bg-[#F4F3EF] text-[#111111] border-b border-[#111111]"
       style={{
         borderRadius: '0px',
         borderBottom: '1px solid #111111',
@@ -57,7 +58,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
               onMouseLeave={() => setHoveredCell(null)}
               onFocus={() => setHoveredCell(cell)}
               onBlur={() => setHoveredCell(null)}
-              className="brutal-interactive flex items-center justify-between px-3 py-3 text-left border-r border-b lg:border-b-0 border-[#111111] cursor-pointer"
+              className="brutal-interactive nav-cell-wrap flex items-center justify-between gap-1 px-1.5 sm:px-3 py-3 text-left border-r border-b lg:border-b-0 border-[#111111] cursor-pointer min-w-0"
               style={{
                 borderRadius: '0px',
                 transitionDuration: '0ms',
@@ -87,7 +88,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
 
               {isBrand ? (
                 <img
-                  src="/assets/brand/ganja-star-mark.svg"
+                  src={withBase('/assets/brand/ganja-star-mark.svg')}
                   alt="G★NJ★"
                   className="h-4 w-auto ml-2 select-none invert"
                 />

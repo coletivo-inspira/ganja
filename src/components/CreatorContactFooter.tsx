@@ -1,5 +1,6 @@
 import React from 'react';
 import { CREATOR_PROFILE, INSTAGRAM_STRIP_ITEMS } from '../data/creator';
+import { withBase } from '../withBase';
 
 export const CreatorContactFooter: React.FC = () => {
   return (
@@ -108,7 +109,7 @@ export const CreatorContactFooter: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#F4F3EF]/30 items-center">
           <div className="lg:col-span-7">
             <img
-              src="/assets/brand/ganja-star-mark.svg"
+              src={withBase('/assets/brand/ganja-star-mark.svg')}
               alt="GANJA STUDIO Monumental Footer Mark"
               className="w-full max-w-lg h-auto invert mb-4"
             />
@@ -123,8 +124,8 @@ export const CreatorContactFooter: React.FC = () => {
               data-testid="footer-link-ganjastudio"
               href={CREATOR_PROFILE.instagramBrandUrl}
               target="_blank"
-              rel="noreferrer"
-              className="p-4 bg-[#1A1A1A] text-[#F4F3EF] border border-[#F4F3EF] flex items-center justify-between hover:bg-[#F5C400] hover:text-[#111111]"
+              rel="noopener noreferrer"
+              className="p-4 bg-[#1A1A1A] text-[#F4F3EF] border border-[#F4F3EF] flex flex-wrap items-center justify-between gap-2 hover:bg-[#F5C400] hover:text-[#111111]"
               style={{ borderRadius: '0px', transitionDuration: '0ms' }}
             >
               <span>INSTAGRAM OFICIAL DA MARCA</span>
@@ -135,8 +136,8 @@ export const CreatorContactFooter: React.FC = () => {
               data-testid="footer-link-isaquex"
               href={CREATOR_PROFILE.instagramCreatorUrl}
               target="_blank"
-              rel="noreferrer"
-              className="p-4 bg-[#1A1A1A] text-[#F4F3EF] border border-[#F4F3EF] flex items-center justify-between hover:bg-[#D92B2B] hover:text-[#FFFFFF]"
+              rel="noopener noreferrer"
+              className="p-4 bg-[#1A1A1A] text-[#F4F3EF] border border-[#F4F3EF] flex flex-wrap items-center justify-between gap-2 hover:bg-[#D92B2B] hover:text-[#FFFFFF]"
               style={{ borderRadius: '0px', transitionDuration: '0ms' }}
             >
               <span>DIREÇÃO CRIATIVA & STYLING</span>
@@ -146,11 +147,11 @@ export const CreatorContactFooter: React.FC = () => {
             <a
               data-testid="footer-link-email"
               href={CREATOR_PROFILE.mailtoUrl}
-              className="p-4 bg-[#F5C400] text-[#111111] border border-[#F4F3EF] flex items-center justify-between hover:bg-[#008055] hover:text-[#FFFFFF]"
+              className="p-4 bg-[#F5C400] text-[#111111] border border-[#F4F3EF] flex flex-wrap items-center justify-between gap-2 hover:bg-[#008055] hover:text-[#FFFFFF]"
               style={{ borderRadius: '0px', transitionDuration: '0ms' }}
             >
               <span>CONTATO DIRETO & ENCOMENDAS</span>
-              <span>{CREATOR_PROFILE.email}</span>
+              <span className="break-all">{CREATOR_PROFILE.email}</span>
             </a>
           </div>
         </div>

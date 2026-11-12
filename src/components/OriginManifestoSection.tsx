@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { kineticLetterSpacingEm, subscribeStudioScroll } from '../scroll/studioScroll';
 import { KineticMarquee } from './KineticMarquee';
 
 export const OriginManifestoSection: React.FC = () => {
-  const [trackingEm, setTrackingEm] = useState<number>(0.22);
+  const [trackingEm, setTrackingEm] = useState<number>(() =>
+    kineticLetterSpacingEm(typeof window !== 'undefined' ? window.scrollY || 0 : 0)
+  );
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || 0;
-      const ratio = Math.min(1, Math.max(0, scrollY / 900));
-      const computed = Number((0.08 + ratio * 0.42).toFixed(3));
-      setTrackingEm(computed);
+    const apply = (scrollY: number) => {
+      const next = kineticLetterSpacingEm(scrollY);
+      setTrackingEm((prev) => (prev === next ? prev : next));
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    apply(window.scrollY || 0);
+    return subscribeStudioScroll(apply);
   }, []);
 
   return (
@@ -35,7 +36,7 @@ export const OriginManifestoSection: React.FC = () => {
             <h2
               data-testid="kinetic-title-origem"
               data-letter-spacing={`${trackingEm}em`}
-              className="font-display-expanded text-2xl sm:text-3xl font-extrabold uppercase leading-tight"
+              className="font-display-expanded text-2xl sm:text-3xl font-extrabold uppercase leading-tight break-words"
               style={{
                 letterSpacing: `${trackingEm}em`,
               }}
