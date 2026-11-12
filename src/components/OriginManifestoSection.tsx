@@ -30,7 +30,10 @@ export const OriginManifestoSection: React.FC = () => {
         {/* Verticalized Spaced Left Margin Column */}
         <div className="lg:col-span-3 p-6 sm:p-8 bg-[#FFFFFF] border-b lg:border-b-0 lg:border-r border-[#111111] flex flex-col justify-between">
           <div>
-            <span className="font-mono-tech text-xs font-bold px-2 py-1 bg-[#D92B2B] text-[#FFFFFF] inline-block mb-4">
+            <span
+              aria-hidden="true"
+              className="font-mono-tech text-xs font-bold px-2 py-1 bg-[#D92B2B] text-[#FFFFFF] inline-block mb-4"
+            >
               DEONDEVEIO?(01)
             </span>
             <h2
@@ -41,12 +44,16 @@ export const OriginManifestoSection: React.FC = () => {
                 letterSpacing: `${trackingEm}em`,
               }}
             >
-              D E O N D E V E I O ? 01
+              <span className="sr-only">DE ONDE VEIO? 01</span>
+              <span aria-hidden="true">D E O N D E V E I O ? 01</span>
             </h2>
           </div>
 
           <div className="mt-8 pt-4 border-t border-[#111111] font-mono-tech text-xs">
-            <div>C R I A D A E M 2 0 2 2</div>
+            <div>
+              <span className="sr-only">CRIADA EM 2022</span>
+              <span aria-hidden="true">C R I A D A E M 2 0 2 2</span>
+            </div>
             <div className="text-[#008055] font-bold mt-1">GANDRA → GANJA</div>
           </div>
         </div>

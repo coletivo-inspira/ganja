@@ -20,6 +20,26 @@ test.describe('Issue 3 — header index accessible names', () => {
     }
   });
 
+  test('A03: letter-spaced Section 01 copy and the marquee are exposed as words, not single letters', async ({ page }) => {
+    await page.goto('/');
+    const section = page.locator('#origem-01');
+    const snapshot = await section.ariaSnapshot();
+    expect(snapshot).toContain('heading "DE ONDE VEIO? 01"');
+    expect(snapshot).toContain('CRIADA EM 2022');
+    expect(snapshot).not.toMatch(/D E O N D E|C R I A D A/);
+
+    const marquee = page.getByTestId('kinetic-marquee');
+    const marqueeSnapshot = await marquee.ariaSnapshot();
+    expect(marqueeSnapshot).toContain('CRIADA EM 2022 — DE ONDE VEIO?');
+    expect(marqueeSnapshot).not.toMatch(/C R I A D A/);
+
+    const srOnly = await marquee.locator('.sr-only').evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return { position: cs.position, width: cs.width, overflow: cs.overflow };
+    });
+    expect(srOnly).toEqual({ position: 'absolute', width: '1px', overflow: 'hidden' });
+  });
+
   test('A02: activating "05. Proposta de desfile" by its accessible name scrolls to the lookbook', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: '05. Proposta de desfile', exact: true }).click();
