@@ -48,7 +48,7 @@ export const CustomCursor: React.FC = () => {
       data-y={coords.y}
       data-expanded={lookTag ? 'true' : 'false'}
       aria-hidden="true"
-      className="fixed top-0 left-0 z-[9999] pointer-events-none select-none flex items-center"
+      className="studio-custom-cursor fixed top-0 left-0 z-[9999] pointer-events-none select-none flex items-center"
       style={{
         transform: `translate3d(${coords.x}px, ${coords.y}px, 0)`,
         borderRadius: '0px',
