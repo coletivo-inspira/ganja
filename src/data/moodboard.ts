@@ -1,4 +1,5 @@
 import type { MoodboardArtifact } from '../types/ganja';
+import { withBase } from '../withBase';
 
 export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
   {
@@ -7,7 +8,7 @@ export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
     category: 'SINALIZAÇÃO VIÁRIA',
     sourceNote: 'Chapa metálica automotiva coletada nas oficinas do centro de São Paulo; matriz tipográfica e cromática (#008055) do Look 03.',
     linkedLookCode: 'LOOK 03',
-    imagePath: '/assets/moodboard/moodboard-01.svg',
+    imagePath: withBase('/assets/moodboard/moodboard-01.svg'),
     initialX: 24,
     initialY: 28,
   },
@@ -17,7 +18,7 @@ export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
     category: 'SINALIZAÇÃO VIÁRIA',
     sourceNote: 'Estética vernáculo-rodoviária brasileira aplicada como transferência gráfica vinílica no Conjunto "Adesivos de Caminhão" (80% CONCLUIDO).',
     linkedLookCode: 'LOOK 03',
-    imagePath: '/assets/moodboard/moodboard-02.svg',
+    imagePath: withBase('/assets/moodboard/moodboard-02.svg'),
     initialX: 350,
     initialY: 24,
   },
@@ -27,7 +28,7 @@ export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
     category: 'MODELAGEM SENAI',
     sourceNote: 'Diagrama técnico de bolsos fole tridimensionais e engenharia de montagem industrial para o Macacão Cargo e Bermuda Cargo.',
     linkedLookCode: 'LOOK 01',
-    imagePath: '/assets/moodboard/moodboard-03.svg',
+    imagePath: withBase('/assets/moodboard/moodboard-03.svg'),
     initialX: 676,
     initialY: 32,
   },
@@ -37,7 +38,7 @@ export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
     category: 'GARIMPO TÊXTIL',
     sourceNote: 'Amostras de descarte têxtil cuja geometria "as found" dita estruturalmente os volumes dos Looks 06, 07 e 08.',
     linkedLookCode: 'LOOK 06',
-    imagePath: '/assets/moodboard/moodboard-04.svg',
+    imagePath: withBase('/assets/moodboard/moodboard-04.svg'),
     initialX: 36,
     initialY: 256,
   },
@@ -47,7 +48,7 @@ export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
     category: 'ESTÉTICA UFMG',
     sourceNote: 'Trocadilho fonético e político Gandra -> Ganja nascido na Escola de Belas Artes da UFMG e estampado no Moletom Legalize Já.',
     linkedLookCode: 'LOOK 05',
-    imagePath: '/assets/moodboard/moodboard-05.svg',
+    imagePath: withBase('/assets/moodboard/moodboard-05.svg'),
     initialX: 364,
     initialY: 262,
   },
@@ -57,7 +58,7 @@ export const MOODBOARD_ARTIFACTS: MoodboardArtifact[] = [
     category: 'ATELIÊ SP',
     sourceNote: 'Fotolito e teste de impressão plastisol sobre malha pesada para a Camiseta Ozempic da frente de Pequena Escala.',
     linkedLookCode: 'LOOK 02',
-    imagePath: '/assets/moodboard/moodboard-06.svg',
+    imagePath: withBase('/assets/moodboard/moodboard-06.svg'),
     initialX: 684,
     initialY: 254,
   },

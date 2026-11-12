@@ -1,31 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 04 - SHORT GUERRILHA + REGATINHA GANJA STAR (Silhueta)">
-  <defs>
-    <pattern id="grid-04" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
-    </pattern>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 04 silhouette">
   <rect width="600" height="800" fill="#FFFFFF"/>
-  <rect x="16" y="16" width="568" height="768" fill="url(#grid-04)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="768" fill="none" stroke="#111111" stroke-width="2"/>
+  <path d="M16,56 H584 M56,16 V784 M544,16 V784" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.35"/>
   <rect x="16" y="16" width="568" height="58" fill="#111111"/>
-  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 04 // GANJA STAR</text>
-  <rect x="392" y="28" width="176" height="34" fill="#008055" stroke="#F4F3EF" stroke-width="1"/>
-  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">95% CONCLUIDO</text>
-  
-        <g stroke="#111111" stroke-width="3">
-          <path d="M235,165 L270,165 L278,215 L322,215 L330,165 L365,165 L375,375 L225,375 Z" fill="#FFFFFF"/>
-          <text x="300" y="285" text-anchor="middle" font-family="monospace" font-weight="700" font-size="28" fill="#111111" stroke="none">G★NJ★</text>
-          <path d="M215,375 L385,375 L408,555 L312,555 L300,455 L288,555 L192,555 Z" fill="#008055"/>
-          <rect x="188" y="410" width="48" height="75" fill="#F5C400" stroke="#111111" stroke-width="2"/>
-          <rect x="364" y="410" width="48" height="75" fill="#F5C400" stroke="#111111" stroke-width="2"/>
+  <text x="34" y="52" font-family="Space Mono, monospace" font-weight="700" font-size="18" fill="#F4F3EF">LOOK 04 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#008055"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">95% CONCLUIDO</text>
+  <g stroke="#111111" stroke-width="3" fill="none">
+        <path d="M235,165 L270,165 L278,215 L322,215 L330,165 L365,165 L375,375 L225,375 Z" fill="#FFFFFF"/>
+        <text x="300" y="290" text-anchor="middle" font-family="Space Mono, monospace" font-size="26" font-weight="700" fill="#111111" stroke="none">G*NJ*</text>
+        <path d="M215,375 L385,375 L408,555 L312,555 L300,455 L288,555 L192,555 Z" fill="#008055"/>
+        <rect x="188" y="410" width="48" height="75" fill="#F5C400"/>
+        <rect x="364" y="410" width="48" height="75" fill="#F5C400"/>
+        <path d="M240,200 H360 M240,214 H360 M240,228 H360" fill="none" stroke="#008055" stroke-width="2"/>
         </g>
-        
   
             <rect x="36" y="672" width="528" height="36" fill="#F5C400" stroke="#111111" stroke-width="2"/>
-            <text x="300" y="696" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="16" fill="#111111">
-              ATELIE VIVO // LOOK 04 - 95% CONCLUIDO
-            </text>
-            
+            <text x="300" y="696" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="16" fill="#111111">ATELIE VIVO // LOOK 04 - 95% CONCLUIDO</text>
   <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
-  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">SHORT GUERRILHA + REGATINHA GANJA STAR</text>
-  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">MALHA CANELADA G★NJ★ + SARJA MILITAR MULTIBOLSOS</text>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="#111111">SHORT GUERRILHA + REGATINHA</text>
+  <text x="34" y="768" font-family="Space Mono, monospace" font-size="11" fill="#111111">RIBANA G*NJ* + SARJA MULTIBOLSO</text>
 </svg>

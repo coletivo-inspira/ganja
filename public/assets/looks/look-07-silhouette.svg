@@ -1,30 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 07 - CONJUNTO RETALHOS DE COURO (Silhueta)">
-  <defs>
-    <pattern id="grid-07" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
-    </pattern>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 07 silhouette">
   <rect width="600" height="800" fill="#FFFFFF"/>
-  <rect x="16" y="16" width="568" height="768" fill="url(#grid-07)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="768" fill="none" stroke="#111111" stroke-width="2"/>
+  <path d="M16,56 H584 M56,16 V784 M544,16 V784" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.35"/>
   <rect x="16" y="16" width="568" height="58" fill="#111111"/>
-  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 07 // GANJA STAR</text>
-  <rect x="392" y="28" width="176" height="34" fill="#F5C400" stroke="#F4F3EF" stroke-width="1"/>
-  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
-  
-        <g stroke="#111111" stroke-width="3">
-          <polygon points="190,165 300,165 300,280 210,280" fill="#111111"/>
-          <polygon points="300,165 410,165 390,280 300,280" fill="#262626"/>
-          <polygon points="210,280 390,280 385,390 215,390" fill="#1A1A1A"/>
-          <polygon points="215,390 300,390 290,520 200,520" fill="#262626"/>
-          <polygon points="300,390 385,390 400,520 310,520" fill="#111111"/>
-          <polygon points="200,520 290,520 280,645 190,645" fill="#111111"/>
-          <polygon points="310,520 400,520 410,645 320,645" fill="#262626"/>
-          <line x1="210" y1="280" x2="390" y2="280" stroke="#F5C400" stroke-width="3" stroke-dasharray="5,5"/>
-          <line x1="200" y1="520" x2="400" y2="520" stroke="#F5C400" stroke-width="3" stroke-dasharray="5,5"/>
+  <text x="34" y="52" font-family="Space Mono, monospace" font-weight="700" font-size="18" fill="#F4F3EF">LOOK 07 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#F5C400"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">100% CONCLUIDO</text>
+  <g stroke="#111111" stroke-width="3" fill="none">
+        <polygon points="190,165 300,165 300,280 210,280" fill="#111111"/>
+        <polygon points="300,165 410,165 390,280 300,280" fill="#1A1A1A"/>
+        <polygon points="210,280 390,280 385,390 215,390" fill="#0D0D0D"/>
+        <polygon points="215,390 300,390 290,520 200,520" fill="#1A1A1A"/>
+        <polygon points="300,390 385,390 400,520 310,520" fill="#111111"/>
+        <polygon points="200,520 290,520 280,645 190,645" fill="#111111"/>
+        <polygon points="310,520 400,520 410,645 320,645" fill="#1A1A1A"/>
+        <path d="M210,280 H390 M200,520 H400" fill="none" stroke="#F5C400" stroke-width="3" stroke-dasharray="5,5"/>
         </g>
-        
   
   <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
-  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">CONJUNTO RETALHOS DE COURO</text>
-  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">RECONSTRUCAO ESTRUTURAL // GARIMPO CENTRO DE SAO PAULO</text>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="#111111">CONJUNTO RETALHOS DE COURO</text>
+  <text x="34" y="768" font-family="Space Mono, monospace" font-size="11" fill="#111111">MOSAICO CENTRO DE SAO PAULO</text>
 </svg>

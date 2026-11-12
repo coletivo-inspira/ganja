@@ -70,6 +70,47 @@ body {
   transition-duration: 0ms !important;
 }
 
+.nav-cell-wrap {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.lookbook-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .lookbook-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lookbook-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.lookbook-grid > * {
+  margin: 0;
+  align-self: start;
+}
+
+.dual-share {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .dual-share {
+    width: var(--dual-share, 50%);
+    flex: none;
+  }
+}
+
 .brutal-btn:hover {
   background-color: #111111;
   color: #F4F3EF;

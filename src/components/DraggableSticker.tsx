@@ -15,12 +15,14 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
   const [offset, setOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [glossPos, setGlossPos] = useState<{ x: number; y: number }>({ x: 50, y: 50 });
+  const draggingRef = useRef(false);
   const dragStartRef = useRef<{ startX: number; startY: number; origX: number; origY: number } | null>(
     null
   );
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     onBringToFront?.(sticker.id);
+    draggingRef.current = true;
     setIsDragging(true);
     dragStartRef.current = {
       startX: event.clientX,
@@ -45,7 +47,7 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
       setGlossPos({ x: Math.round(relX), y: Math.round(relY) });
     }
 
-    if (!isDragging || !dragStartRef.current) return;
+    if (!draggingRef.current || !dragStartRef.current) return;
     const dx = event.clientX - dragStartRef.current.startX;
     const dy = event.clientY - dragStartRef.current.startY;
     setOffset({
@@ -55,7 +57,8 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
   };
 
   const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
+    if (!draggingRef.current) return;
+    draggingRef.current = false;
     setIsDragging(false);
     dragStartRef.current = null;
     if (typeof event.currentTarget.releasePointerCapture === 'function') {
@@ -94,6 +97,7 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({
         boxShadow: isDragging ? '6px 6px 0px #111111' : '4px 4px 0px #111111',
         touchAction: 'none',
         transitionDuration: '0ms',
+        maxWidth: 'min(78%, 240px)',
       }}
     >
       {/* Película Adesiva Vinílica (Sticker Gloss) — Zero Gaussian Backdrop Blur */}

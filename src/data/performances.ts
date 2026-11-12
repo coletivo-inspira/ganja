@@ -1,4 +1,5 @@
 import type { StagePerformanceItem } from '../types/ganja';
+import { withBase } from '../withBase';
 
 export const STAGE_PERFORMANCES: StagePerformanceItem[] = [
   {
@@ -9,7 +10,7 @@ export const STAGE_PERFORMANCES: StagePerformanceItem[] = [
     year: '2023–2025',
     garmentUsed: 'Peças Custom Upcycling 1/1 & Streetwear Utilitário Ganja Studio',
     metadataLine: 'ANITTA / MÚLTIPLOS SHOWS / 2023–2025 / CUSTOM UPCYCLING & CARGO GANJA STUDIO',
-    previewMedia: '/assets/stage/anitta.svg',
+    previewMedia: withBase('/assets/stage/anitta.svg'),
     accentColor: '#D92B2B',
   },
   {
@@ -20,7 +21,7 @@ export const STAGE_PERFORMANCES: StagePerformanceItem[] = [
     year: '2023–2024',
     garmentUsed: 'Figurino Autoral & Styling de Palco (Fenômeno Natural / Rock in Rio)',
     metadataLine: 'MARINA SENA / VIDEOCLIPE & FENÔMENO NATURAL (ROCK IN RIO) / 2023–2024 / STYLING & CONFECÇÃO AUTORAL',
-    previewMedia: '/assets/stage/marina-sena.svg',
+    previewMedia: withBase('/assets/stage/marina-sena.svg'),
     accentColor: '#F5C400',
   },
   {
@@ -31,7 +32,7 @@ export const STAGE_PERFORMANCES: StagePerformanceItem[] = [
     year: '2024',
     garmentUsed: 'Linha Utilitária de Alta Mobilidade, Cargos & Patchwork Ganja Studio',
     metadataLine: 'PEDRO SAMPAIO / FIGURINO BALLET DE PALCO / 2024 / CARGOS & PATCHWORK DE ALTA MOBILIDADE',
-    previewMedia: '/assets/stage/pedro-sampaio.svg',
+    previewMedia: withBase('/assets/stage/pedro-sampaio.svg'),
     accentColor: '#008055',
   },
   {
@@ -42,7 +43,7 @@ export const STAGE_PERFORMANCES: StagePerformanceItem[] = [
     year: '2023–2024',
     garmentUsed: 'Composição de Figurino do Ballet de Palco em Reconstrução Têxtil',
     metadataLine: 'KENDRICK LAMAR / FIGURINO BALLET DE PALCO / 2023–2024 / RECONSTRUÇÃO TÊXTIL & STREETWEAR',
-    previewMedia: '/assets/stage/kendrick-lamar.svg',
+    previewMedia: withBase('/assets/stage/kendrick-lamar.svg'),
     accentColor: '#D92B2B',
   },
 ];

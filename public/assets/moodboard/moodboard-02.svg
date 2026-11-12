@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="ADESIVO: NAO ME SIGA ESTOU PERDIDA">
-  <rect width="420" height="300" fill="#D92B2B" stroke="#111111" stroke-width="4"/>
-  <rect x="14" y="14" width="392" height="40" fill="#111111"/>
-  <text x="26" y="40" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#F4F3EF">ARQUIVO ARE.NA // LOOK 03</text>
-  <rect x="24" y="84" width="372" height="120" fill="#F5C400" stroke="#111111" stroke-width="2"/>
-  <text x="210" y="140" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#D92B2B">ADESIVO: NAO ME SIGA ESTOU PERDIDA</text>
-  <text x="210" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#D92B2B">PARA-CHOQUE DE CAMINHAO // BR-116</text>
-  <text x="24" y="268" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#F5C400">MESA DE LUZ DIGITAL // GANJA STUDIO SP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="moodboard-02">
+  
+          <rect width="420" height="300" fill="#F4F3EF" stroke="#111111" stroke-width="4"/>
+          <g transform="rotate(-6 210 150)">
+            <rect x="40" y="90" width="340" height="120" fill="#F5C400" stroke="#111111" stroke-width="4"/>
+            <text x="210" y="145" text-anchor="middle" font-family="Syne, sans-serif" font-size="18" font-weight="800" fill="#111111">NAO ME SIGA</text>
+            <text x="210" y="175" text-anchor="middle" font-family="Space Mono, monospace" font-size="14" font-weight="700" fill="#D92B2B">ESTOU PERDIDA</text>
+          </g>
+          <text x="24" y="270" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#111111">ADESIVO DE CAMINHAO // LOOK 03</text>
 </svg>

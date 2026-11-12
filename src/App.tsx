@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
+import { publishStudioScroll } from './scroll/studioScroll';
 import { CustomCursor } from './components/CustomCursor';
 import { StickyHeader } from './components/StickyHeader';
 import { HeroSection } from './components/HeroSection';
@@ -14,15 +15,22 @@ export const App: React.FC = () => {
   const [activeSectionId, setActiveSectionId] = useState<string>('hero-00');
 
   useEffect(() => {
+    const publishNative = () => {
+      publishStudioScroll(window.scrollY || document.documentElement.scrollTop || 0);
+    };
+    publishNative();
+    window.addEventListener('scroll', publishNative, { passive: true });
+
     const isJsdom =
       typeof navigator !== 'undefined' && /jsdom/i.test(navigator.userAgent || '');
-    if (isJsdom || typeof window === 'undefined') {
-      return;
+    if (isJsdom) {
+      return () => window.removeEventListener('scroll', publishNative);
     }
 
     let rafId = 0;
+    let lenis: Lenis | null = null;
     try {
-      const lenis = new Lenis({
+      lenis = new Lenis({
         duration: 1.15,
         smoothWheel: true,
         wheelMultiplier: 0.95,
@@ -30,19 +38,26 @@ export const App: React.FC = () => {
       });
       lenisRef.current = lenis;
 
+      const onLenisScroll = (instance: Lenis) => {
+        publishStudioScroll(instance.scroll);
+      };
+      lenis.on('scroll', onLenisScroll);
+
       const raf = (time: number) => {
-        lenis.raf(time);
+        lenis?.raf(time);
         rafId = window.requestAnimationFrame(raf);
       };
       rafId = window.requestAnimationFrame(raf);
 
       return () => {
+        window.removeEventListener('scroll', publishNative);
         window.cancelAnimationFrame(rafId);
-        lenis.destroy();
+        lenis?.off('scroll', onLenisScroll);
+        lenis?.destroy();
         lenisRef.current = null;
       };
     } catch {
-      return;
+      return () => window.removeEventListener('scroll', publishNative);
     }
   }, []);
 
@@ -52,7 +67,12 @@ export const App: React.FC = () => {
     if (!targetEl) return;
 
     if (lenisRef.current) {
-      lenisRef.current.scrollTo(targetEl, { offset: -48 });
+      const lenis = lenisRef.current;
+      // Playwright's click scrolls the sticky control into view and can leave
+      // Lenis's animated scroll ahead of window.scrollY. Snap to the real
+      // position first so the next scrollTo measures the section correctly.
+      lenis.scrollTo(window.scrollY || 0, { immediate: true, force: true });
+      lenis.scrollTo(targetEl, { offset: -48 });
     } else if (typeof targetEl.scrollIntoView === 'function') {
       targetEl.scrollIntoView({ behavior: 'smooth' });
     }

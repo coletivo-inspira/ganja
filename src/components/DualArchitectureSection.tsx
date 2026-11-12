@@ -7,10 +7,10 @@ export const DualArchitectureSection: React.FC = () => {
   const upcyclingLooks = LOOKS_CATALOG.filter((l) => l.frontId === 'upcycling-1of1');
   const pequenaEscalaLooks = LOOKS_CATALOG.filter((l) => l.frontId === 'pequena-escala');
 
-  const upcyclingWidth =
-    activeSide === 'upcycling' ? 'lg:w-[65%]' : activeSide === 'pequena-escala' ? 'lg:w-[35%]' : 'lg:w-1/2';
-  const pequenaWidth =
-    activeSide === 'pequena-escala' ? 'lg:w-[65%]' : activeSide === 'upcycling' ? 'lg:w-[35%]' : 'lg:w-1/2';
+  const upcyclingShare =
+    activeSide === 'upcycling' ? '65%' : activeSide === 'pequena-escala' ? '35%' : '50%';
+  const pequenaShare =
+    activeSide === 'pequena-escala' ? '65%' : activeSide === 'upcycling' ? '35%' : '50%';
 
   return (
     <section
@@ -49,8 +49,8 @@ export const DualArchitectureSection: React.FC = () => {
           onMouseEnter={() => setActiveSide('upcycling')}
           onMouseLeave={() => setActiveSide(null)}
           onClick={() => setActiveSide('upcycling')}
-          className={`${upcyclingWidth} p-6 sm:p-10 bg-[#F4F3EF] border-b lg:border-b-0 lg:border-r border-[#111111] flex flex-col justify-between cursor-pointer`}
-          style={{ borderRadius: '0px' }}
+          className="dual-share p-6 sm:p-10 bg-[#F4F3EF] border-b lg:border-b-0 lg:border-r border-[#111111] flex flex-col justify-between cursor-pointer"
+          style={{ borderRadius: '0px', ['--dual-share' as string]: upcyclingShare }}
         >
           <div>
             <div className="inline-block px-3 py-1 bg-[#D92B2B] text-[#FFFFFF] font-mono-tech text-xs font-bold mb-4">
@@ -88,8 +88,8 @@ export const DualArchitectureSection: React.FC = () => {
           onMouseEnter={() => setActiveSide('pequena-escala')}
           onMouseLeave={() => setActiveSide(null)}
           onClick={() => setActiveSide('pequena-escala')}
-          className={`${pequenaWidth} p-6 sm:p-10 bg-[#FFFFFF] flex flex-col justify-between cursor-pointer`}
-          style={{ borderRadius: '0px' }}
+          className="dual-share p-6 sm:p-10 bg-[#FFFFFF] flex flex-col justify-between cursor-pointer"
+          style={{ borderRadius: '0px', ['--dual-share' as string]: pequenaShare }}
         >
           <div>
             <div className="inline-block px-3 py-1 bg-[#008055] text-[#FFFFFF] font-mono-tech text-xs font-bold mb-4">

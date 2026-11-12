@@ -123,7 +123,7 @@ describe('Milestone 1 — Foundation, Design Tokens, Brand/Visual Assets, Data M
       expect(htmlContent).toContain('Syne');
       expect(htmlContent).toContain('Plus+Jakarta+Sans');
       expect(htmlContent).toContain('Space+Mono');
-      expect(htmlContent).toContain('/assets/brand/ganja-star-star.svg');
+      expect(htmlContent).toMatch(/(?:\/|%BASE_URL%)assets\/brand\/ganja-star-star\.svg/);
     });
   });
 

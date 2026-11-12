@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="SELO DE PESAGEM GANJA 25G // TCC UFMG">
-  <rect width="420" height="300" fill="#F5C400" stroke="#111111" stroke-width="4"/>
-  <rect x="14" y="14" width="392" height="40" fill="#111111"/>
-  <text x="26" y="40" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#F4F3EF">ARQUIVO ARE.NA // LOOK 05</text>
-  <rect x="24" y="84" width="372" height="120" fill="#111111" stroke="#111111" stroke-width="2"/>
-  <text x="210" y="140" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#F5C400">SELO DE PESAGEM GANJA 25G // TCC UFMG</text>
-  <text x="210" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#F5C400">MANIFESTO POLITICO &amp; CONTRACULTURA</text>
-  <text x="24" y="268" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">MESA DE LUZ DIGITAL // GANJA STUDIO SP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="moodboard-05">
+  
+          <rect width="420" height="300" fill="#F5C400" stroke="#111111" stroke-width="4"/>
+          <circle cx="210" cy="140" r="78" fill="#F4F3EF" stroke="#111111" stroke-width="6"/>
+          <circle cx="210" cy="140" r="58" fill="none" stroke="#008055" stroke-width="4"/>
+          <text x="210" y="134" text-anchor="middle" font-family="Syne, sans-serif" font-size="22" font-weight="800" fill="#111111">25G</text>
+          <text x="210" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" font-weight="700" fill="#D92B2B">GANJA</text>
+          <text x="24" y="270" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#111111">SELO DE PESAGEM // LOOK 05</text>
 </svg>

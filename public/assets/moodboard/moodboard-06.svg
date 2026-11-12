@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="MATRIZ SERIGRAFICA OZEMPIC">
-  <rect width="420" height="300" fill="#FFFFFF" stroke="#111111" stroke-width="4"/>
-  <rect x="14" y="14" width="392" height="40" fill="#111111"/>
-  <text x="26" y="40" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#F4F3EF">ARQUIVO ARE.NA // LOOK 02</text>
-  <rect x="24" y="84" width="372" height="120" fill="#D92B2B" stroke="#111111" stroke-width="2"/>
-  <text x="210" y="140" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#FFFFFF">MATRIZ SERIGRAFICA OZEMPIC</text>
-  <text x="210" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#FFFFFF">GOD SAVE BEARS FROM OZEMPIC</text>
-  <text x="24" y="268" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#D92B2B">MESA DE LUZ DIGITAL // GANJA STUDIO SP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="moodboard-06">
+  
+          <rect width="420" height="300" fill="#FFFFFF" stroke="#111111" stroke-width="4"/>
+          <rect x="40" y="50" width="340" height="170" fill="none" stroke="#111111" stroke-width="8"/>
+          <rect x="70" y="78" width="280" height="90" fill="#D92B2B"/>
+          <text x="210" y="132" text-anchor="middle" font-family="Syne, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">OZEMPIC</text>
+          <rect x="70" y="176" width="180" height="16" fill="#F5C400"/>
+          <path d="M300,200 L390,230 L360,250 L280,214 Z" fill="#111111"/>
+          <text x="24" y="270" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#111111">MATRIZ SERIGRAFICA // LOOK 02</text>
 </svg>

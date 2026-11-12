@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="MOLDE INDUSTRIAL SENAI // PAPEL KRAFT">
-  <rect width="420" height="300" fill="#F4F3EF" stroke="#111111" stroke-width="4"/>
-  <rect x="14" y="14" width="392" height="40" fill="#111111"/>
-  <text x="26" y="40" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#F4F3EF">ARQUIVO ARE.NA // LOOK 01</text>
-  <rect x="24" y="84" width="372" height="120" fill="#111111" stroke="#111111" stroke-width="2"/>
-  <text x="210" y="140" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#F4F3EF">MOLDE INDUSTRIAL SENAI // PAPEL KRAFT</text>
-  <text x="210" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#F4F3EF">ENGENHARIA REVERSA DE MODELAGEM</text>
-  <text x="24" y="268" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">MESA DE LUZ DIGITAL // GANJA STUDIO SP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-label="moodboard-03">
+  
+          <rect width="420" height="300" fill="#F4F3EF" stroke="#111111" stroke-width="4"/>
+          <rect x="30" y="48" width="360" height="190" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+          <path d="M50,70 H370 M50,100 H370 M50,130 H370 M50,160 H370 M50,190 H370" stroke="#111111" stroke-width="1" stroke-opacity="0.45"/>
+          <path d="M210,60 L250,200 L170,200 Z" fill="none" stroke="#D92B2B" stroke-width="3"/>
+          <path d="M90,210 H150 M270,210 H330" stroke="#008055" stroke-width="3" stroke-dasharray="4,3"/>
+          <text x="24" y="270" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#111111">MOLDE SENAI // LOOK 01</text>
 </svg>

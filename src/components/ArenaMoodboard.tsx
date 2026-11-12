@@ -42,6 +42,13 @@ export const ArenaMoodboard: React.FC = () => {
       origX: current.x,
       origY: current.y,
     };
+    if (typeof event.currentTarget.setPointerCapture === 'function') {
+      try {
+        event.currentTarget.setPointerCapture(event.pointerId);
+      } catch {
+        // Ignore in synthetic test environments
+      }
+    }
   };
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {

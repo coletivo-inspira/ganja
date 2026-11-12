@@ -1,4 +1,5 @@
 import type { CreatorProfile, InstagramStripItem, NavCellItem } from '../types/ganja';
+import { withBase } from '../withBase';
 
 export const NAV_CELLS: NavCellItem[] = [
   {
@@ -7,7 +8,7 @@ export const NAV_CELLS: NavCellItem[] = [
     labelPart: 'GANJASTUDIO',
     targetSectionId: 'hero-00',
     previewTitle: 'O CORPO COMO SUPERFÍCIE DE COMUNICAÇÃO // COLEÇÃO GANJA STAR',
-    previewImage: '/assets/brand/ganja-star-mark.svg',
+    previewImage: withBase('/assets/brand/ganja-star-mark.svg'),
   },
   {
     id: 'nav-01',
@@ -16,7 +17,7 @@ export const NAV_CELLS: NavCellItem[] = [
     indexPart: '(01)',
     targetSectionId: 'origem-01',
     previewTitle: 'CRIADA EM 2022 // UFMG + SENAI // ENGENHARIA REVERSA DO VESTUÁRIO',
-    previewImage: '/assets/moodboard/moodboard-03.svg',
+    previewImage: withBase('/assets/moodboard/moodboard-03.svg'),
   },
   {
     id: 'nav-02',
@@ -25,7 +26,7 @@ export const NAV_CELLS: NavCellItem[] = [
     indexPart: '(02)',
     targetSectionId: 'publico-02',
     previewTitle: '18-35 ANOS // JOVEM, URBANO E UNDERGROUND // DE SÃO PAULO PARA O MUNDO',
-    previewImage: '/assets/moodboard/moodboard-05.svg',
+    previewImage: withBase('/assets/moodboard/moodboard-05.svg'),
   },
   {
     id: 'nav-03',
@@ -34,7 +35,7 @@ export const NAV_CELLS: NavCellItem[] = [
     indexPart: '(03)',
     targetSectionId: 'atuacao-03',
     previewTitle: 'PROVA DE PALCO: ANITTA, MARINA SENA, PEDRO SAMPAIO & KENDRICK LAMAR',
-    previewImage: '/assets/stage/anitta.svg',
+    previewImage: withBase('/assets/stage/anitta.svg'),
   },
   {
     id: 'nav-04',
@@ -43,7 +44,7 @@ export const NAV_CELLS: NavCellItem[] = [
     indexPart: '(04)',
     targetSectionId: 'frentes-04',
     previewTitle: 'ARQUITETURA DUAL: PEÇAS ÚNICAS (1/1 UPCYCLING) VS. PEQUENA ESCALA',
-    previewImage: '/assets/looks/look-06-silhouette.svg',
+    previewImage: withBase('/assets/looks/look-06-silhouette.svg'),
   },
   {
     id: 'nav-05',
@@ -52,7 +53,7 @@ export const NAV_CELLS: NavCellItem[] = [
     indexPart: '(05)',
     targetSectionId: 'desfile-05',
     previewTitle: 'CASA DE CRIADORES // COLEÇÃO GANJA STAR (LOOK 01 AO LOOK 10)',
-    previewImage: '/assets/looks/look-03-silhouette.svg',
+    previewImage: withBase('/assets/looks/look-03-silhouette.svg'),
   },
   {
     id: 'nav-06',
@@ -61,7 +62,7 @@ export const NAV_CELLS: NavCellItem[] = [
     indexPart: '(06)',
     targetSectionId: 'contato-06',
     previewTitle: 'ISAQUE GANDRA (@ISAQUEX) // @GANJASTUDIO.BR // GANDRAISAQUE@HOTMAIL.COM',
-    previewImage: '/assets/instagram/ig-01.svg',
+    previewImage: withBase('/assets/instagram/ig-01.svg'),
   },
 ];
 
@@ -102,7 +103,7 @@ export const INSTAGRAM_STRIP_ITEMS: InstagramStripItem[] = [
     handle: '@ganjastudio.br',
     caption: 'Processo de reconstrução têxtil 1/1 em retalhos de couro e pelúcia no ateliê no centro de São Paulo.',
     tag: 'UPCYCLING 1/1 // LOOK 06',
-    imagePath: '/assets/instagram/ig-01.svg',
+    imagePath: withBase('/assets/instagram/ig-01.svg'),
     permalink: 'https://www.instagram.com/ganjastudio.br/',
     linkedLookCode: 'LOOK 06',
   },
@@ -111,7 +112,7 @@ export const INSTAGRAM_STRIP_ITEMS: InstagramStripItem[] = [
     handle: '@ganjastudio.br',
     caption: 'Dossiê e proposta de desfile da coleção GANJA STAR submetida à Casa de Criadores (CDC).',
     tag: 'CASA DE CRIADORES // GANJA STAR',
-    imagePath: '/assets/instagram/ig-02.svg',
+    imagePath: withBase('/assets/instagram/ig-02.svg'),
     permalink: 'https://www.instagram.com/ganjastudio.br/',
     linkedLookCode: 'LOOK 01',
   },
@@ -120,7 +121,7 @@ export const INSTAGRAM_STRIP_ITEMS: InstagramStripItem[] = [
     handle: '@ganjastudio.br',
     caption: 'Arquivo de prova de palco: figurinos para Anitta, Marina Sena, Pedro Sampaio e Kendrick Lamar.',
     tag: 'STAGE PROOF // PALCO GLOBAL',
-    imagePath: '/assets/instagram/ig-03.svg',
+    imagePath: withBase('/assets/instagram/ig-03.svg'),
     permalink: 'https://www.instagram.com/ganjastudio.br/',
     linkedLookCode: 'LOOK 09',
   },
@@ -129,7 +130,7 @@ export const INSTAGRAM_STRIP_ITEMS: InstagramStripItem[] = [
     handle: '@ganjastudio.br',
     caption: 'Serigrafia de alto impacto "GOD SAVE BEARS FROM OZEMPIC" combinada com Calça Cargo estruturada.',
     tag: 'PEQUENA ESCALA // LOOK 02',
-    imagePath: '/assets/instagram/ig-04.svg',
+    imagePath: withBase('/assets/instagram/ig-04.svg'),
     permalink: 'https://www.instagram.com/ganjastudio.br/',
     linkedLookCode: 'LOOK 02',
   },
@@ -138,7 +139,7 @@ export const INSTAGRAM_STRIP_ITEMS: InstagramStripItem[] = [
     handle: '@ganjastudio.br',
     caption: 'Adesivos de caminhão "Não me siga estou perdida" e placa GSH-2168 no Ateliê Vivo (80% CONCLUIDO).',
     tag: 'ATELIÊ VIVO // LOOK 03',
-    imagePath: '/assets/instagram/ig-05.svg',
+    imagePath: withBase('/assets/instagram/ig-05.svg'),
     permalink: 'https://www.instagram.com/ganjastudio.br/',
     linkedLookCode: 'LOOK 03',
   },
@@ -147,7 +148,7 @@ export const INSTAGRAM_STRIP_ITEMS: InstagramStripItem[] = [
     handle: '@ganjastudio.br',
     caption: 'Moletom Legalize Já e selo de pesagem GANJA 25G — subversão e contracultura de SP para o mundo.',
     tag: 'MANIFESTO // LOOK 05',
-    imagePath: '/assets/instagram/ig-06.svg',
+    imagePath: withBase('/assets/instagram/ig-06.svg'),
     permalink: 'https://www.instagram.com/ganjastudio.br/',
     linkedLookCode: 'LOOK 05',
   },

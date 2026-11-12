@@ -1,30 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 10 - JAQUETA PUFFER + BERMUDA CARGO + BONE (Silhueta)">
-  <defs>
-    <pattern id="grid-10" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.22"/>
-    </pattern>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" aria-label="LOOK 10 silhouette">
   <rect width="600" height="800" fill="#FFFFFF"/>
-  <rect x="16" y="16" width="568" height="768" fill="url(#grid-10)" stroke="#111111" stroke-width="2"/>
+  <rect x="16" y="16" width="568" height="768" fill="none" stroke="#111111" stroke-width="2"/>
+  <path d="M16,56 H584 M56,16 V784 M544,16 V784" fill="none" stroke="#111111" stroke-width="0.6" stroke-opacity="0.35"/>
   <rect x="16" y="16" width="568" height="58" fill="#111111"/>
-  <text x="34" y="51" font-family="Space Mono, monospace" font-weight="700" font-size="20" fill="#F4F3EF">LOOK 10 // GANJA STAR</text>
-  <rect x="392" y="28" width="176" height="34" fill="#F5C400" stroke="#F4F3EF" stroke-width="1"/>
-  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="13" fill="#111111">100% CONCLUIDO</text>
-  
-    <g stroke="#111111" stroke-width="3">
-      <path d="M255,105 L345,105 L365,140 L240,140 Z" fill="#111111"/>
-      <rect x="335" y="130" width="45" height="10" fill="#F5C400"/>
-      <rect x="160" y="165" width="280" height="55" fill="#F5C400"/>
-      <rect x="150" y="220" width="300" height="55" fill="#F5C400"/>
-      <rect x="160" y="275" width="280" height="55" fill="#F5C400"/>
-      <rect x="175" y="330" width="250" height="50" fill="#111111"/>
-      <path d="M205,380 L395,380 L415,565 L315,565 L300,455 L285,565 L185,565 Z" fill="#1A1A1A"/>
-      <rect x="180" y="425" width="50" height="75" fill="#D92B2B" stroke="#111111" stroke-width="2"/>
-      <rect x="370" y="425" width="50" height="75" fill="#D92B2B" stroke="#111111" stroke-width="2"/>
-    </g>
-    
+  <text x="34" y="52" font-family="Space Mono, monospace" font-weight="700" font-size="18" fill="#F4F3EF">LOOK 10 // GANJA STAR</text>
+  <rect x="392" y="28" width="176" height="34" fill="#F5C400"/>
+  <text x="480" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="12" fill="#111111">100% CONCLUIDO</text>
+  <g stroke="#111111" stroke-width="3" fill="none">
+        <path d="M250,108 H360 L372,142 H238 Z" fill="#111111"/>
+        <rect x="360" y="128" width="48" height="12" fill="#F5C400"/>
+        <rect x="155" y="165" width="290" height="48" fill="#F5C400"/>
+        <rect x="148" y="213" width="304" height="48" fill="#F5C400"/>
+        <rect x="155" y="261" width="290" height="48" fill="#F5C400"/>
+        <rect x="175" y="309" width="250" height="46" fill="#111111"/>
+        <path d="M205,355 L395,355 L415,560 L315,560 L300,440 L285,560 L185,560 Z" fill="#1A1A1A"/>
+        <rect x="180" y="410" width="50" height="70" fill="#D92B2B"/>
+        <rect x="370" y="410" width="50" height="70" fill="#D92B2B"/>
+        <path d="M160,188 H440 M155,236 H448 M160,284 H440" fill="none" stroke="#111111" stroke-width="2"/>
+        </g>
   
   <rect x="16" y="718" width="568" height="66" fill="#F4F3EF" stroke="#111111" stroke-width="2"/>
-  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="18" fill="#111111">JAQUETA PUFFER + BERMUDA CARGO + BONE</text>
-  <text x="34" y="769" font-family="Space Mono, monospace" font-weight="400" font-size="11" fill="#111111">HIPER-VOLUME TERMICO + UTILITARISMO URBANO PAULISTANO</text>
+  <text x="34" y="746" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="#111111">JAQUETA PUFFER + BERMUDA + BONE</text>
+  <text x="34" y="768" font-family="Space Mono, monospace" font-size="11" fill="#111111">VOLUME TERMICO PAULISTANO</text>
 </svg>

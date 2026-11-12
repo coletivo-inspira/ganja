@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LOOKS_CATALOG } from '../data/collection';
 import { URBAN_STICKERS } from '../data/stickers';
+import { withBase } from '../withBase';
 import { DraggableSticker } from './DraggableSticker';
 
 export const HeroSection: React.FC = () => {
@@ -42,13 +43,13 @@ export const HeroSection: React.FC = () => {
             <div className="mb-4">
               <img
                 data-testid="brand-mark-svg"
-                src="/assets/brand/ganja-star-mark.svg"
+                src={withBase('/assets/brand/ganja-star-mark.svg')}
                 alt="G★NJ★ Official Brand Mark"
                 className="w-full max-w-xl h-auto block select-none"
               />
             </div>
 
-            <h1 className="font-display-compressed text-5xl sm:text-7xl xl:text-8xl font-extrabold uppercase tracking-[-0.04em] leading-[0.88] mb-6">
+            <h1 className="font-display-compressed text-[1.65rem] sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold uppercase tracking-[-0.04em] leading-[0.88] mb-6 break-words">
               G★NJ★ STAR — O CORPO COMO SUPERFÍCIE DE COMUNICAÇÃO
             </h1>
 
