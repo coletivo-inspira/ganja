@@ -22,7 +22,7 @@ export const LookbookSection: React.FC = () => {
           <span className="font-mono-tech text-xs font-bold px-3 py-1 bg-[#111111] text-[#F5C400]">
             PROPOSTADEDESFILE(05) // CASA DE CRIADORES (CDC)
           </span>
-          <span className="font-mono-tech text-xs font-bold text-[#D92B2B]">
+          <span className="font-mono-tech text-xs font-bold text-[var(--accent-red-text)]">
             10 LOOKS DOCUMENTADOS // ATELIÊ VIVO (LOOK 03: 80% | LOOK 04: 95%)
           </span>
         </div>

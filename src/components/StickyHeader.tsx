@@ -79,7 +79,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
                   <span
                     className="font-mono-tech text-[11px] sm:text-xs font-bold"
                     style={{
-                      color: isHovered ? '#F5C400' : '#D92B2B',
+                      color: isHovered ? '#F5C400' : 'var(--accent-red-text)',
                     }}
                   >
                     {cell.indexPart}

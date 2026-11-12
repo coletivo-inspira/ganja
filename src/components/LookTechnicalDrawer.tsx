@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { LookItem } from '../types/ganja';
+import { getLookInquiry, INQUIRY_SIZES, type InquirySize } from '../data/lookInquiry';
 
 export interface LookTechnicalDrawerProps {
   look: LookItem | null;
@@ -8,10 +9,12 @@ export interface LookTechnicalDrawerProps {
 
 export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, onClose }) => {
   const [zoomScale, setZoomScale] = useState<number>(1);
+  const [size, setSize] = useState<InquirySize>();
   const [panOrigin, setPanOrigin] = useState<{ x: number; y: number }>({ x: 50, y: 50 });
 
   useEffect(() => {
     setZoomScale(1);
+    setSize(undefined);
     setPanOrigin({ x: 50, y: 50 });
   }, [look?.id]);
 
@@ -28,9 +31,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
 
   if (!look) return null;
 
-  const mailtoHref = `mailto:gandraisaque@hotmail.com?subject=${encodeURIComponent(
-    look.inquirySubject
-  )}`;
+  const inquiry = getLookInquiry(look, size);
 
   return (
     <div
@@ -43,7 +44,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
         data-look-code={look.code}
         role="dialog"
         aria-modal="true"
-        aria-label={`Ficha Técnica de Upcycling — ${look.code}`}
+        aria-label={`Ficha Técnica — ${look.code}`}
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-2xl h-full overflow-y-auto bg-[#F4F3EF] text-[#111111] border-l-2 border-[#111111] brutal-shadow flex flex-col justify-between"
         style={{
@@ -72,7 +73,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
           <div className="p-6 space-y-6">
             {/* Look Code & Title */}
             <div className="border-b border-[#111111] pb-4">
-              <div className="font-mono-tech text-xs font-bold text-[#D92B2B] mb-1">
+              <div className="font-mono-tech text-xs font-bold text-[var(--accent-red-text)] mb-1">
                 {look.frontLabel} // {look.statusBadge}
               </div>
               <h2
@@ -123,7 +124,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
             >
               <div className="flex items-center justify-between font-mono-tech text-xs font-bold mb-2">
                 <span>STATUS DE PRODUÇÃO (ATELIÊ VIVO)</span>
-                <span className="text-[#D92B2B]">
+                <span className="text-[var(--accent-red-text)]">
                   {look.code} - {look.statusBadge} ({look.completionPercent}%)
                 </span>
               </div>
@@ -145,7 +146,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
                 FICHA DE MATERIAIS DE UPCYCLING & ENGENHARIA REVERSA
               </div>
               <div>
-                <div className="font-bold text-[#D92B2B] mb-1">MATÉRIAS-PRIMAS CATALOGADAS:</div>
+                <div className="font-bold text-[var(--accent-red-text)] mb-1">MATÉRIAS-PRIMAS CATALOGADAS:</div>
                 <ul className="list-disc pl-5 space-y-1">
                   {look.rawMaterials.map((mat, idx) => (
                     <li key={idx}>{mat}</li>
@@ -164,13 +165,31 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
 
         {/* Direct Inquiry / Order CTA */}
         <div className="p-6 bg-[#111111] text-[#F4F3EF] border-t border-[#111111]">
+          {look.frontId === 'upcycling-1of1' && (
+            <p className="font-mono-tech text-xs mb-3">PEÇA ÚNICA 1/1 // ARQUIVO VIVO — Medidas sob consulta.</p>
+          )}
+          {inquiry.acceptsSize && (
+            <fieldset className="mb-4">
+              <legend className="font-mono-tech text-xs mb-2">Tamanho de interesse</legend>
+              <div className="flex gap-2">
+                {INQUIRY_SIZES.map((option) => (
+                  <button key={option} type="button" aria-pressed={size === option}
+                    onClick={() => setSize(option)}
+                    className={`px-4 py-2 border font-mono-tech ${size === option ? 'bg-[#F5C400] text-[#111111]' : 'bg-[#111111] text-[#F4F3EF]'}`}>
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          )}
+          <p className="text-xs mb-3">Solicitação por e-mail. Disponibilidade, medidas e condições serão confirmadas pelo ateliê.</p>
           <a
             data-testid="drawer-inquiry-cta"
-            href={mailtoHref}
+            href={inquiry.href}
             className="block w-full py-3.5 px-4 bg-[#F5C400] text-[#111111] text-center font-mono-tech text-sm font-bold uppercase brutal-border brutal-shadow"
             style={{ borderRadius: '0px' }}
           >
-            ENCOMENDA / CONSULTA DIRETA — {look.code} (@GANJASTUDIO.BR)
+            {inquiry.label} — {look.code}
           </a>
         </div>
       </aside>

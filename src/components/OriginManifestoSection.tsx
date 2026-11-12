@@ -62,7 +62,7 @@ export const OriginManifestoSection: React.FC = () => {
         <div className="lg:col-span-9 p-6 sm:p-10 lg:p-12 flex flex-col justify-between gap-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 bg-[#FFFFFF] brutal-border brutal-shadow">
-              <div className="font-mono-tech text-xs font-bold text-[#D92B2B] mb-2">
+              <div className="font-mono-tech text-xs font-bold text-[var(--accent-red-text)] mb-2">
                 01.A // MATRIZ DUPLA: UFMG & SENAI (2022)
               </div>
               <p className="text-sm sm:text-base leading-relaxed">
