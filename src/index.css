@@ -58,6 +58,13 @@ body {
   }
 }
 
+/* Touch-only screens have no cursor to follow. */
+@media (hover: none), (pointer: coarse) {
+  .studio-custom-cursor {
+    display: none;
+  }
+}
+
 /* Reusable Brutalist Architecture Utilities */
 .brutal-border {
   border: 1px solid #111111;
