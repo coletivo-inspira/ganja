@@ -10,7 +10,10 @@ export const LookCard: React.FC<LookCardProps> = ({ look, onSelect }) => {
   const [viewMode, setViewMode] = useState<'silhouette' | 'macro'>('silhouette');
 
   const cardTestId = look.id.replace('look-', 'look-card-');
-  const activeImage = viewMode === 'macro' ? look.macroImage : look.silhouetteImage;
+  const plates = [
+    { mode: 'silhouette', src: look.silhouetteImage },
+    { mode: 'macro', src: look.macroImage },
+  ] as const;
 
   return (
     <article
@@ -47,12 +50,21 @@ export const LookCard: React.FC<LookCardProps> = ({ look, onSelect }) => {
 
       {/* 3:4 Vertical Portrait Visual (Instant Silhouette <-> Macro Toggle) */}
       <div className="relative w-full aspect-[3/4] bg-[#FFFFFF] border-b border-[#111111] overflow-hidden">
-        <img
-          src={activeImage}
-          alt={`${look.code} — ${look.title} (${viewMode})`}
-          className="w-full h-full object-cover block"
-          style={{ transitionDuration: '0ms' }}
-        />
+        {/* Both plates stay mounted so the macro is already decoded on first hover. */}
+        {plates.map((plate) => {
+          const isShown = plate.mode === viewMode;
+          return (
+            <img
+              key={plate.mode}
+              data-plate={plate.mode}
+              src={plate.src}
+              alt={isShown ? `${look.code} — ${look.title} (${plate.mode})` : ''}
+              aria-hidden={isShown ? undefined : true}
+              className="absolute inset-0 w-full h-full object-cover block"
+              style={{ opacity: isShown ? 1 : 0, transitionDuration: '0ms' }}
+            />
+          );
+        })}
 
         <div className="absolute top-2 left-2 px-2 py-0.5 bg-[#111111] text-[#F4F3EF] font-mono-tech text-[10px] font-bold">
           {viewMode === 'macro' ? 'MODO: MACRO TEXTURA 4:1' : 'MODO: SILHUETA 3:4'}

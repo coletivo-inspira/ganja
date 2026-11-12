@@ -21,7 +21,7 @@ export const KineticMarquee: React.FC<KineticMarqueeProps> = ({
         <span>{text}</span>
         <span className="text-[#F5C400]">★</span>
         <span>{text}</span>
-        <span className="text-[#D92B2B]">★</span>
+        <span className="text-[#F4F3EF]">★</span>
       </div>
     </div>
   );
