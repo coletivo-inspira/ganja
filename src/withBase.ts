@@ -1,4 +1,4 @@
-/** Prefix a public asset path with Vite's base (`/` locally, `/ganja/` on Pages). */
+/** Prefix a public asset path with Vite's base (`/` by default, including the ganja.inspira.dev.br Pages deploy; override with VITE_BASE). */
 export function withBase(path: string): string {
   const base = import.meta.env.BASE_URL || '/';
   const normalized = base.endsWith('/') ? base : `${base}/`;

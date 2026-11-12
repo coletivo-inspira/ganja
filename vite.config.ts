@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-export default defineConfig(({ command }) => {
+export default defineConfig(() => {
   const fromEnv = process.env.VITE_BASE;
-  const base = fromEnv && fromEnv.length > 0 ? fromEnv : command === 'build' ? '/ganja/' : '/';
+  const base = fromEnv && fromEnv.length > 0 ? fromEnv : '/';
 
   return {
     base,

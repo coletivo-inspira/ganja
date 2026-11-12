@@ -9,7 +9,8 @@ Recorded from the verification run on this branch. Counts are the reporter total
 | `src/__tests__/foundation.test.tsx` | 27 | 0 |
 | `src/__tests__/sections00to04.test.tsx` | 4 | 0 |
 | `src/__tests__/sections05to06.test.tsx` | 4 | 0 |
-| **Total** | **35** | **0** |
+| `src/__tests__/pagesBase.test.ts` | 4 | 0 |
+| **Total** | **39** | **0** |
 
 ## Playwright (`npx playwright test`, Chromium)
 
@@ -21,7 +22,7 @@ Recorded from the verification run on this branch. Counts are the reporter total
 | `tests/e2e/tier4-scenarios.spec.ts` | 12 | 0 |
 | **Total** | **236** | **0** |
 
-The suite reported `236 passed` in 40.1s. `npm run build` (`tsc -b && vite build`) completed with base `/ganja/`.
+The suite reported `236 passed` in 42.5s. `npm run build` (`tsc -b && vite build`) completed with base `/`, matching the custom domain `ganja.inspira.dev.br`: `dist/index.html` loads `/assets/index-*.js` and `/assets/index-*.css`, and `dist/CNAME` is emitted from `public/CNAME`.
 
 ## Browser walk
 
