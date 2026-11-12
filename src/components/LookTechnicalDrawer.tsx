@@ -72,7 +72,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
           <div className="p-6 space-y-6">
             {/* Look Code & Title */}
             <div className="border-b border-[#111111] pb-4">
-              <div className="font-mono-tech text-xs font-bold text-[#D92B2B] mb-1">
+              <div className="font-mono-tech text-xs font-bold text-[var(--accent-red-text)] mb-1">
                 {look.frontLabel} // {look.statusBadge}
               </div>
               <h2
@@ -123,7 +123,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
             >
               <div className="flex items-center justify-between font-mono-tech text-xs font-bold mb-2">
                 <span>STATUS DE PRODUÇÃO (ATELIÊ VIVO)</span>
-                <span className="text-[#D92B2B]">
+                <span className="text-[var(--accent-red-text)]">
                   {look.code} - {look.statusBadge} ({look.completionPercent}%)
                 </span>
               </div>
@@ -145,7 +145,7 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
                 FICHA DE MATERIAIS DE UPCYCLING & ENGENHARIA REVERSA
               </div>
               <div>
-                <div className="font-bold text-[#D92B2B] mb-1">MATÉRIAS-PRIMAS CATALOGADAS:</div>
+                <div className="font-bold text-[var(--accent-red-text)] mb-1">MATÉRIAS-PRIMAS CATALOGADAS:</div>
                 <ul className="list-disc pl-5 space-y-1">
                   {look.rawMaterials.map((mat, idx) => (
                     <li key={idx}>{mat}</li>

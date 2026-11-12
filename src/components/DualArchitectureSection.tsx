@@ -70,7 +70,7 @@ export const DualArchitectureSection: React.FC = () => {
           <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#111111] font-mono-tech text-xs">
             {upcyclingLooks.map((look) => (
               <div key={look.id} className="p-2.5 bg-[#FFFFFF] brutal-border">
-                <div className="font-bold text-[#D92B2B]">{look.code}</div>
+                <div className="font-bold text-[var(--accent-red-text)]">{look.code}</div>
                 <div className="truncate font-bold">{look.title}</div>
                 <div className="text-[11px]">{look.statusBadge}</div>
               </div>
