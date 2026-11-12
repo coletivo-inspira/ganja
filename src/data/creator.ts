@@ -5,6 +5,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-brand',
     rawText: 'GANJASTUDIO',
+    ariaLabel: 'GANJA STUDIO — início',
     labelPart: 'GANJASTUDIO',
     targetSectionId: 'hero-00',
     previewTitle: 'O CORPO COMO SUPERFÍCIE DE COMUNICAÇÃO // COLEÇÃO GANJA STAR',
@@ -13,6 +14,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-01',
     rawText: 'DEONDEVEIO?(01)',
+    ariaLabel: '01. De onde veio?',
     labelPart: 'DEONDEVEIO?',
     indexPart: '(01)',
     targetSectionId: 'origem-01',
@@ -22,6 +24,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-02',
     rawText: 'PUBLICOALVO(02)',
+    ariaLabel: '02. Público-alvo',
     labelPart: 'PUBLICOALVO',
     indexPart: '(02)',
     targetSectionId: 'publico-02',
@@ -31,6 +34,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-03',
     rawText: 'ATUAÇÃODAMARCA(03)',
+    ariaLabel: '03. Atuação da marca',
     labelPart: 'ATUAÇÃODAMARCA',
     indexPart: '(03)',
     targetSectionId: 'atuacao-03',
@@ -40,6 +44,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-04',
     rawText: 'FRENTESDECRIAÇÃO(04)',
+    ariaLabel: '04. Frentes de criação',
     labelPart: 'FRENTESDECRIAÇÃO',
     indexPart: '(04)',
     targetSectionId: 'frentes-04',
@@ -49,6 +54,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-05',
     rawText: 'PROPOSTADEDESFILE(05)',
+    ariaLabel: '05. Proposta de desfile',
     labelPart: 'PROPOSTADEDESFILE',
     indexPart: '(05)',
     targetSectionId: 'desfile-05',
@@ -58,6 +64,7 @@ export const NAV_CELLS: NavCellItem[] = [
   {
     id: 'nav-06',
     rawText: 'CONTATO(06)',
+    ariaLabel: '06. Contato',
     labelPart: 'CONTATO',
     indexPart: '(06)',
     targetSectionId: 'contato-06',

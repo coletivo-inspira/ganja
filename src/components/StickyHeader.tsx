@@ -51,6 +51,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
               key={cell.id}
               type="button"
               data-testid={testId}
+              aria-label={cell.ariaLabel}
               data-target-section={cell.targetSectionId}
               data-active={isActive ? 'true' : 'false'}
               onClick={() => handleCellClick(cell)}

@@ -58,6 +58,7 @@ export interface MoodboardArtifact {
 export interface NavCellItem {
   id: string;                // 'nav-brand' | 'nav-01' .. 'nav-06'
   rawText: string;           // 'GANJASTUDIO' | 'DEONDEVEIO?(01)' | 'PUBLICOALVO(02)' | 'ATUAÇÃODAMARCA(03)' | 'FRENTESDECRIAÇÃO(04)' | 'PROPOSTADEDESFILE(05)' | 'CONTATO(06)'
+  ariaLabel: string;         // Spoken name for screen readers, e.g. '01. De onde veio?'
   labelPart: string;         // 'DEONDEVEIO?' etc.
   indexPart?: string;        // '(01)' .. '(06)'
   targetSectionId: string;   // 'hero-00' | 'origem-01' | 'publico-02' | 'atuacao-03' | 'frentes-04' | 'desfile-05' | 'contato-06'
