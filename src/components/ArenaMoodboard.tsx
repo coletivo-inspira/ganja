@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { MOODBOARD_ARTIFACTS } from '../data/moodboard';
 import type { MoodboardArtifact } from '../types/ganja';
+import { useTouchDragGate } from './useTouchDragGate';
 
 interface CardOffset {
   x: number;
@@ -25,6 +26,8 @@ export const ArenaMoodboard: React.FC = () => {
     origY: number;
   } | null>(null);
 
+  const gate = useTouchDragGate<HTMLDivElement>();
+
   const handlePointerDown = (
     event: React.PointerEvent<HTMLDivElement>,
     artifact: MoodboardArtifact
@@ -35,24 +38,28 @@ export const ArenaMoodboard: React.FC = () => {
       ...prev,
       [artifact.id]: { ...current, z: maxZ + 1 },
     }));
-    dragRef.current = {
-      id: artifact.id,
-      startX: event.clientX,
-      startY: event.clientY,
-      origX: current.x,
-      origY: current.y,
-    };
-    if (typeof event.currentTarget.setPointerCapture === 'function') {
-      try {
-        event.currentTarget.setPointerCapture(event.pointerId);
-      } catch {
-        // Ignore in synthetic test environments
+    const target = event.currentTarget;
+    const { pointerId, clientX, clientY } = event;
+    gate.begin(event, () => {
+      dragRef.current = {
+        id: artifact.id,
+        startX: clientX,
+        startY: clientY,
+        origX: current.x,
+        origY: current.y,
+      };
+      if (typeof target.setPointerCapture === 'function') {
+        try {
+          target.setPointerCapture(pointerId);
+        } catch {
+          // Ignore in synthetic test environments
+        }
       }
-    }
+    });
   };
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!dragRef.current) return;
+    if (!gate.shouldTrack(event) || !dragRef.current) return;
     const { id, startX, startY, origX, origY } = dragRef.current;
     const dx = event.clientX - startX;
     const dy = event.clientY - startY;
@@ -67,14 +74,17 @@ export const ArenaMoodboard: React.FC = () => {
   };
 
   const handlePointerUp = () => {
+    gate.end();
     dragRef.current = null;
   };
 
   return (
     <div
+      ref={gate.ref}
       data-testid="arena-moodboard"
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
       className="w-full bg-[#F4F3EF] texture-halftone border-t border-[#111111] p-6 sm:p-10"
       style={{ borderRadius: '0px' }}
     >
@@ -108,7 +118,8 @@ export const ArenaMoodboard: React.FC = () => {
                 borderRadius: '0px',
                 transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
                 zIndex: pos.z,
-                touchAction: 'none',
+                touchAction: 'pan-y',
+                WebkitTouchCallout: 'none',
               }}
             >
               <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#111111] font-mono-tech text-[11px] font-bold">
