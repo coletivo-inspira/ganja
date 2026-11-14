@@ -4,10 +4,10 @@
 Permitir contato adequado à frente e ao estágio de cada look, com leitura acessível e decisões explícitas para o piloto Instagram. Decisões delegadas pelo usuário em 12/11/2026.
 
 ## Decisões e aceite
-- WIP prevalece sobre a frente no CTA. Look 03 e Look 04 oferecem solicitação de pré-reserva. A mensagem preserva a frente e o progresso.
+- WIP prevalece sobre a frente no CTA. Look 03 e Look 04 oferecem `ENTRAR NA FILA DE PRÉ-RESERVA DO ATELIÊ`. A mensagem preserva a frente e o progresso.
 - Look 09 oferece consulta de projeto autoral e styling.
 - Pequena escala permite indicar P, M, G ou GG como interesse. Ausência de escolha gera “A confirmar”. A seleção não afirma estoque.
-- Peças únicas mostram selo 1/1. Medidas reais ausentes são apresentadas como “sob consulta”. A futura tabela depende de dados fornecidos pela marca.
+- Peças únicas mostram o selo `[PEÇA ÚNICA 1/1 // ARQUIVO VIVO]` e a tabela de medidas fixas (busto, cintura, quadril, comprimento). Medidas reais ausentes aparecem como “sob consulta” até a marca preencher `measurements` no catálogo.
 - Canal de contato é o e-mail já publicado. A abertura do cliente de e-mail não confirma reserva nem pedido.
 - Texto vermelho sobre papel usa #BF2424. O contraste calculado é 5,41:1 sobre #F4F3EF.
 - Instagram usa autorização do dono no Vitrine, uma conta profissional por vitrine e projeção pública sem tokens. O serviço deve importar o histórico acessível com paginação e exibir fotos, carrosséis e capas de vídeos.
