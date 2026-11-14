@@ -200,6 +200,65 @@ body {
   filter: grayscale(0%) contrast(100%);
 }
 
+/* Instagram feed page (#/feed) */
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .feed-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .feed-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.feed-tile,
+.feed-action {
+  transition: none !important;
+}
+
+.feed-tile:hover .feed-tile-cta,
+.feed-tile:focus-visible .feed-tile-cta {
+  background-color: #f5c400;
+}
+
+.feed-tile:hover,
+.feed-action.brutal-shadow:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #111111;
+}
+
+.feed-topbar .feed-action:hover {
+  background-color: #111111;
+  color: #f5c400;
+}
+
+.feed-tile:focus-visible,
+.feed-action:focus-visible {
+  outline: 3px solid #111111;
+  outline-offset: 3px;
+}
+
+.feed-action:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.feed-carousel-stack {
+  box-shadow: 3px 3px 0px #111111, 6px 6px 0px #f4f3ef, 7px 7px 0px #111111;
+}
+
 /* Continuous Marquee Animation */
 @keyframes brutal-marquee {
   0% {

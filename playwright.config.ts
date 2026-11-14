@@ -44,10 +44,20 @@ export default defineConfig({
       },
     },
   ],
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
-    reuseExistingServer: true,
-    timeout: 60000,
-  },
+  webServer: [
+    {
+      command: 'npm run dev',
+      url: 'http://localhost:5173',
+      reuseExistingServer: true,
+      timeout: 60000,
+    },
+    {
+      // Same app with the Vitrine adapter enabled; specs mock this host with page.route.
+      command: 'npx vite --port 5174 --strictPort',
+      url: 'http://localhost:5174',
+      reuseExistingServer: true,
+      timeout: 60000,
+      env: { VITE_VITRINE_FEED_URL: 'https://vitrine-feed.test/v1/sites/ganja/feed' },
+    },
+  ],
 });

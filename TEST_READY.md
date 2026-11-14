@@ -1,6 +1,6 @@
 # TEST_READY — GANJA STUDIO
 
-Recorded from the verification run for issues #12–#16 on `cursor/verify-issues-12-16-24f1` (branched from `main` at `dc238c2`). Counts are the reporter totals, not estimates.
+Recorded on the Instagram feed branch (`cursor/instagram-feed-ganja-aa38`) rebased on `main` at `d3bbb58`, which includes the #12–#16 verification (#22) and the release tooling (#21). Counts are the reporter totals, not estimates.
 
 ## Unit (`npm run test:unit`, Vitest)
 
@@ -17,7 +17,9 @@ Recorded from the verification run for issues #12–#16 on `cursor/verify-issues
 | `src/__tests__/lookInquiry.test.ts` | 11 | 0 |
 | `src/__tests__/lookDrawerInquiry.test.tsx` | 1 | 0 |
 | `src/__tests__/issuesVerification.test.tsx` | 6 | 0 |
-| **Total** | **79** | **0** |
+| `src/__tests__/feedSource.test.ts` | 12 | 0 |
+| `src/__tests__/feedPage.test.tsx` | 12 | 0 |
+| **Total** | **103** | **0** |
 
 ## Playwright (`npx playwright test`, Chromium)
 
@@ -33,11 +35,14 @@ Recorded from the verification run for issues #12–#16 on `cursor/verify-issues
 | `tests/e2e/macro-preload-contrast.spec.ts` | 2 | 0 |
 | `tests/e2e/cursor-touch.spec.ts` | 1 | 0 |
 | `tests/e2e/issues-12-16-verification.spec.ts` | 5 | 0 |
-| **Total** | **254** | **0** |
+| `tests/e2e/feed-page.spec.ts` | 9 | 0 |
+| **Total** | **263** | **0** |
 
-The suite reported `254 passed` in 48.0s on two consecutive runs. `npm run test:unit` reported `79 passed`. `npm run build` (`tsc -b && vite build`) completes with base `/`.
+The suite reported `263 passed` (about 50s) in two of three full runs after the rebase. In the other run, `tier4-scenarios.spec.ts` S07 timed out scrolling to a lookbook element that re-rendered mid-scroll; it then passed 8/8 with `--repeat-each=8`. Before the rebase, `touch-stage-proof.spec.ts` T02 failed once by reading the stage image's `naturalWidth` before it loaded under parallel load. Neither test touches the feed code. `npm run test:unit` reported `103 passed`. `npm run build` (`tsc -b && vite build`) completes with base `/`.
 
 `issues-12-16-verification.spec.ts` runs at 1440×900 with a mouse and at 390×844 with `hasTouch`/`isMobile` and real CDP `Input.dispatchTouchEvent` gestures. It covers the Mesa de Luz reset (swipe scrolls, 450ms long-press drags, reset restores), a sub-300ms sticker hold that must not drag, and the drawer per front: 1/1 seal and measurement table, `[P] [M] [G] [GG]` selector, and the WIP pre-reserve CTA with its mailto. Every element inside the drawer and the new reset button is checked for 0px radius and no blur.
+
+`feed-page.spec.ts` uses two dev servers. Port 5173 serves the site as deployed, with no `VITE_VITRINE_FEED_URL`, so the feed reads the static archive. Port 5174 sets `VITE_VITRINE_FEED_URL=https://vitrine-feed.test/v1/sites/ganja/feed`, and the spec mocks that host with `page.route` using the provisional contract in `src/feed/vitrineFeedSource.ts`. The `FV*` tests check that contract and the page states, not a real Vitrine. FV01 also checks that feed requests carry no `Authorization` header, cookies or token parameters. The `#/feed` page was checked at 1440×900 and 390×844 with the static archive, mocked Vitrine data (photo, carousel, video cover) and the disconnected state. Keyboard focus goes to the heading when the page opens and to the first new tile after each "Carregar mais".
 
 ## Live audit
 
