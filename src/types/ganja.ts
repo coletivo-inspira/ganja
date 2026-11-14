@@ -18,6 +18,7 @@ export interface LookItem {
   macroImage: string;        // Path in /assets/looks/look-XX-macro.svg (or .png)
   featuredStickers?: string[];
   inquirySubject: string;    // Pre-filled subject for direct consultation CTA
+  measurements?: Partial<Record<'BUSTO' | 'CINTURA' | 'QUADRIL' | 'COMPRIMENTO', string>>; // 1/1 pieces, supplied by the brand (e.g. '96 cm')
 }
 
 export interface StagePerformanceItem {

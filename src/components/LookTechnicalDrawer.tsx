@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import type { LookItem } from '../types/ganja';
-import { getLookInquiry, INQUIRY_SIZES, type InquirySize } from '../data/lookInquiry';
+import {
+  getLookInquiry,
+  getUniquePieceMeasurements,
+  INQUIRY_SIZES,
+  UNIQUE_PIECE_SEAL,
+  type InquirySize,
+} from '../data/lookInquiry';
 
 export interface LookTechnicalDrawerProps {
   look: LookItem | null;
@@ -166,17 +172,43 @@ export const LookTechnicalDrawer: React.FC<LookTechnicalDrawerProps> = ({ look, 
         {/* Direct Inquiry / Order CTA */}
         <div className="p-6 bg-[#111111] text-[#F4F3EF] border-t border-[#111111]">
           {look.frontId === 'upcycling-1of1' && (
-            <p className="font-mono-tech text-xs mb-3">PEÇA ÚNICA 1/1 // ARQUIVO VIVO — Medidas sob consulta.</p>
+            <div className="mb-4">
+              <div
+                data-testid="drawer-unique-seal"
+                className="inline-block mb-3 px-2.5 py-1 bg-[#F4F3EF] text-[#111111] font-mono-tech text-xs font-bold border border-[#F4F3EF]"
+                style={{ borderRadius: '0px', boxShadow: '3px 3px 0px #F5C400' }}
+              >
+                {UNIQUE_PIECE_SEAL}
+              </div>
+              <table
+                data-testid="drawer-measurements"
+                className="w-full border-collapse font-mono-tech text-xs"
+                style={{ borderRadius: '0px' }}
+              >
+                <caption className="text-left mb-2">MEDIDAS FIXAS DA PEÇA — {look.code}</caption>
+                <tbody>
+                  {getUniquePieceMeasurements(look).map(({ field, value }) => (
+                    <tr key={field}>
+                      <th scope="row" className="text-left font-bold px-3 py-2 border border-[#F4F3EF]">
+                        {field}
+                      </th>
+                      <td className="text-right px-3 py-2 border border-[#F4F3EF] text-[#F5C400]">{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
           {inquiry.acceptsSize && (
             <fieldset className="mb-4">
               <legend className="font-mono-tech text-xs mb-2">Tamanho de interesse</legend>
-              <div className="flex gap-2">
+              <div data-testid="drawer-size-selector" className="flex gap-2">
                 {INQUIRY_SIZES.map((option) => (
                   <button key={option} type="button" aria-pressed={size === option}
                     onClick={() => setSize(option)}
-                    className={`px-4 py-2 border font-mono-tech ${size === option ? 'bg-[#F5C400] text-[#111111]' : 'bg-[#111111] text-[#F4F3EF]'}`}>
-                    {option}
+                    className={`px-4 py-2 border border-[#F4F3EF] font-mono-tech font-bold cursor-pointer ${size === option ? 'bg-[#F5C400] text-[#111111]' : 'bg-[#111111] text-[#F4F3EF]'}`}
+                    style={{ borderRadius: '0px', transitionDuration: '0ms', boxShadow: size === option ? '3px 3px 0px #F4F3EF' : 'none' }}>
+                    <span aria-hidden="true">[</span>{option}<span aria-hidden="true">]</span>
                   </button>
                 ))}
               </div>

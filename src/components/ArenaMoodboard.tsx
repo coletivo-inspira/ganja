@@ -9,14 +9,16 @@ interface CardOffset {
   z: number;
 }
 
-export const ArenaMoodboard: React.FC = () => {
-  const [offsets, setOffsets] = useState<Record<string, CardOffset>>(() => {
-    const init: Record<string, CardOffset> = {};
-    MOODBOARD_ARTIFACTS.forEach((item, idx) => {
-      init[item.id] = { x: 0, y: 0, z: 10 + idx };
-    });
-    return init;
+const initialOffsets = (): Record<string, CardOffset> => {
+  const init: Record<string, CardOffset> = {};
+  MOODBOARD_ARTIFACTS.forEach((item, idx) => {
+    init[item.id] = { x: 0, y: 0, z: 10 + idx };
   });
+  return init;
+};
+
+export const ArenaMoodboard: React.FC = () => {
+  const [offsets, setOffsets] = useState<Record<string, CardOffset>>(initialOffsets);
 
   const dragRef = useRef<{
     id: string;
@@ -78,6 +80,12 @@ export const ArenaMoodboard: React.FC = () => {
     dragRef.current = null;
   };
 
+  const resetBoard = () => {
+    gate.end();
+    dragRef.current = null;
+    setOffsets(initialOffsets());
+  };
+
   return (
     <div
       ref={gate.ref}
@@ -97,8 +105,17 @@ export const ArenaMoodboard: React.FC = () => {
             MESA DE LUZ DIGITAL — GARIMPO, RECORTES URBANOS & ATELIÊ SP
           </h3>
         </div>
-        <div className="font-mono-tech text-xs font-bold">
-          [ARRASTE OS BLOCOS DE PESQUISA PELA MESA DE LUZ]
+        <div className="flex flex-wrap items-center gap-2 font-mono-tech text-xs font-bold">
+          <span>[ARRASTE OS BLOCOS DE PESQUISA PELA MESA DE LUZ]</span>
+          <button
+            type="button"
+            data-testid="reset-moodboard"
+            onClick={resetBoard}
+            className="brutal-interactive px-2 py-1 bg-[#111111] text-[#F4F3EF] border border-[#111111] font-mono-tech text-[11px] font-bold cursor-pointer hover:bg-[#F5C400] hover:text-[#111111]"
+            style={{ borderRadius: '0px', transitionDuration: '0ms' }}
+          >
+            [RESETAR MESA DE LUZ]
+          </button>
         </div>
       </div>
 
