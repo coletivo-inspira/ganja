@@ -57,7 +57,7 @@ export default defineConfig({
       url: 'http://localhost:5174',
       reuseExistingServer: true,
       timeout: 60000,
-      env: { VITE_VITRINE_FEED_URL: 'https://vitrine-feed.test/v1/sites/ganja/feed' },
+      env: { VITE_VITRINE_FEED_URL: 'https://vitrine-feed.test/data/vitrines/ganja/instagram-feed.json' },
     },
   ],
 });

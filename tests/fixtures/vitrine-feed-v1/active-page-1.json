@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "slug": "ganja",
+  "status": "active",
+  "revision": 14,
+  "hash": "8f3c2d91a4b7e605c1209d4e8b7a6f5123456789abcdef0123456789abcdef01",
+  "syncedAt": "2026-11-12T15:00:00.000Z",
+  "profile": {
+    "username": "ganjastudio.br",
+    "displayName": "Ganja Studio",
+    "profileUrl": "https://www.instagram.com/ganjastudio.br/",
+    "avatarUrl": "https://scontent.cdninstagram.com/v/t51.2885-19/exemplo-avatar.jpg"
+  },
+  "pageInfo": {
+    "limit": 3,
+    "hasNextPage": true,
+    "nextCursor": "MjAyNi0xMS0xMFQxODozMDowMFp8MTc5MjkzODQ3NTY="
+  },
+  "items": [
+    {
+      "id": "17929384756102938",
+      "mediaType": "CAROUSEL_ALBUM",
+      "mediaUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/capa.jpg",
+      "thumbnailUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/capa.jpg",
+      "caption": "Nova coleção disponível na nossa vitrine.",
+      "permalink": "https://www.instagram.com/p/DC1a2B3c4D5/",
+      "publishedAt": "2026-11-11T19:42:10.000Z",
+      "children": [
+        {
+          "id": "17929384756102939",
+          "mediaType": "IMAGE",
+          "mediaUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/foto-1.jpg"
+        },
+        {
+          "id": "17929384756102940",
+          "mediaType": "VIDEO",
+          "mediaUrl": "https://scontent.cdninstagram.com/v/t50.2886-16/video-2.mp4",
+          "thumbnailUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/capa-video-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "17929384756102901",
+      "mediaType": "IMAGE",
+      "mediaUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/look-03.jpg",
+      "caption": "Look 03 em prova de palco.",
+      "permalink": "https://www.instagram.com/p/DC0x9Y8z7W6/",
+      "publishedAt": "2026-11-10T18:30:00.000Z"
+    },
+    {
+      "id": "17929384756102877",
+      "mediaType": "VIDEO",
+      "mediaUrl": "https://scontent.cdninstagram.com/v/t50.2886-16/reel-atelie.mp4",
+      "thumbnailUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/capa-reel.jpg",
+      "caption": "Bastidores do ateliê.",
+      "permalink": "https://www.instagram.com/reel/DCzQ1w2E3r4/",
+      "publishedAt": "2026-11-09T12:00:00.000Z"
+    }
+  ]
+}

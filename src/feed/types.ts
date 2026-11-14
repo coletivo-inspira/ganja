@@ -28,6 +28,8 @@ export interface FeedPage {
   items: FeedItem[];
   nextCursor: string | null;
   syncedAt?: string | null;
+  /** Vitrine is serving its last valid projection because the latest sync failed. */
+  stale?: boolean;
 }
 
 export interface FeedSource {
@@ -40,12 +42,15 @@ export interface FeedSource {
 export class FeedError extends Error {
   readonly reason: 'network' | 'http' | 'invalid';
   readonly status?: number;
+  /** Public error code from Vitrine, e.g. `FEED_UNAVAILABLE` or `INVALID_CURSOR`. */
+  readonly code?: string;
 
-  constructor(reason: FeedError['reason'], message: string, status?: number) {
+  constructor(reason: FeedError['reason'], message: string, status?: number, code?: string) {
     super(message);
     this.name = 'FeedError';
     this.reason = reason;
     this.status = status;
+    this.code = code;
   }
 }
 

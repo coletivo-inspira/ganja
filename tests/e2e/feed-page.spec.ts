@@ -3,10 +3,12 @@ import { expect, test, type Page, type Route } from '@playwright/test';
 import { assertNoBackdropBlur, assertNoHorizontalOverflow, assertZeroBorderRadius, isHardDropShadow } from './helpers';
 
 const VITRINE_APP = 'http://localhost:5174';
-const FEED_ENDPOINT = 'https://vitrine-feed.test/v1/sites/ganja/feed**';
+const FEED_ENDPOINT = 'https://vitrine-feed.test/data/vitrines/ganja/instagram-feed.json**';
 const CDN = 'https://vitrine-cdn.test';
 const ASSETS = path.resolve(process.cwd(), 'public/assets/instagram');
+const CORS = { 'Access-Control-Allow-Origin': VITRINE_APP };
 
+// Vitrine public contract, schemaVersion 1 (vitrine docs/instagram/interface-publica-feed.md).
 function vitrineItem(n: number, mediaType: 'IMAGE' | 'CAROUSEL_ALBUM' | 'VIDEO') {
   const cover = `${CDN}/ig-0${((n - 1) % 6) + 1}.svg`;
   return {
@@ -16,23 +18,30 @@ function vitrineItem(n: number, mediaType: 'IMAGE' | 'CAROUSEL_ALBUM' | 'VIDEO')
     thumbnailUrl: mediaType === 'VIDEO' ? cover : undefined,
     caption: `Publicação ${n} do ateliê`,
     permalink: `https://www.instagram.com/p/POST${n}/`,
-    timestamp: `2026-11-${String(14 - n).padStart(2, '0')}T12:00:00Z`,
-    childrenCount: mediaType === 'CAROUSEL_ALBUM' ? 3 : undefined,
+    publishedAt: `2026-11-${String(14 - n).padStart(2, '0')}T12:00:00.000Z`,
+    children:
+      mediaType === 'CAROUSEL_ALBUM'
+        ? [1, 2, 3].map((c) => ({ id: `post-${n}-${c}`, mediaType: 'IMAGE', mediaUrl: cover }))
+        : undefined,
   };
 }
 
 const PAGE_ONE = {
-  status: 'connected',
-  profile: { username: 'ganjastudio.br', profileUrl: 'https://www.instagram.com/ganjastudio.br/' },
+  schemaVersion: 1,
+  slug: 'ganja',
+  status: 'active',
+  revision: 14,
+  hash: 'hash-pagina-1',
+  syncedAt: '2026-11-14T09:30:00.000Z',
+  profile: { username: 'ganjastudio.br', displayName: 'Ganja Studio', profileUrl: 'https://www.instagram.com/ganjastudio.br/' },
+  pageInfo: { limit: 12, hasNextPage: true, nextCursor: 'page-2' },
   items: [vitrineItem(1, 'IMAGE'), vitrineItem(2, 'CAROUSEL_ALBUM'), vitrineItem(3, 'VIDEO'), vitrineItem(4, 'IMAGE')],
-  nextCursor: 'page-2',
-  syncedAt: '2026-11-14T09:30:00Z',
 };
 
 const PAGE_TWO = {
   ...PAGE_ONE,
+  pageInfo: { limit: 12, hasNextPage: false, nextCursor: null },
   items: [vitrineItem(5, 'VIDEO'), vitrineItem(6, 'IMAGE')],
-  nextCursor: null,
 };
 
 async function serveCdn(page: Page): Promise<void> {
@@ -139,7 +148,7 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
       const headers = route.request().headers();
       requests.push({ url: route.request().url(), auth: headers.authorization, cookie: headers.cookie });
       await new Promise((r) => setTimeout(r, 400));
-      await route.fulfill({ json: cursor === 'page-2' ? PAGE_TWO : PAGE_ONE, headers: { 'Access-Control-Allow-Origin': '*' } });
+      await route.fulfill({ json: cursor === 'page-2' ? PAGE_TWO : PAGE_ONE, headers: CORS });
     });
 
     await page.goto(`${VITRINE_APP}/#/feed`);
@@ -156,7 +165,7 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
     await expect(page.locator('[data-testid^="feed-tile-post-"]')).toHaveCount(6);
     await expect(page.getByTestId('feed-end')).toContainText('FIM DO HISTÓRICO ACESSÍVEL // 6');
 
-    const feedRequests = requests.filter((r) => r.url.includes('/feed'));
+    const feedRequests = requests.filter((r) => r.url.includes('/instagram-feed.json'));
     expect(feedRequests.map((r) => new URL(r.url).searchParams.get('cursor'))).toContain('page-2');
     for (const request of feedRequests) {
       expect(new URL(request.url).searchParams.get('limit')).toBe('12');
@@ -168,7 +177,10 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
 
   test('FV02: empty account shows the empty state', async ({ page }) => {
     await mockFeed(page, (route) =>
-      route.fulfill({ json: { ...PAGE_ONE, items: [], nextCursor: null }, headers: { 'Access-Control-Allow-Origin': '*' } })
+      route.fulfill({
+        json: { ...PAGE_ONE, status: 'empty', items: [], pageInfo: { limit: 12, hasNextPage: false, nextCursor: null } },
+        headers: CORS,
+      })
     );
     await page.goto(`${VITRINE_APP}/#/feed`);
     await expect(page.getByTestId('feed-empty')).toContainText('Nenhuma publicação');
@@ -178,8 +190,12 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
     let failing = true;
     await mockFeed(page, (route) =>
       failing
-        ? route.fulfill({ status: 503, body: 'down', headers: { 'Access-Control-Allow-Origin': '*' } })
-        : route.fulfill({ json: PAGE_TWO, headers: { 'Access-Control-Allow-Origin': '*' } })
+        ? route.fulfill({
+            status: 503,
+            json: { error: 'FEED_UNAVAILABLE', status: 'unavailable', message: 'O feed desta vitrine ainda não está disponível.' },
+            headers: { ...CORS, 'Retry-After': '300' },
+          })
+        : route.fulfill({ json: PAGE_TWO, headers: CORS })
     );
     await page.goto(`${VITRINE_APP}/#/feed`);
     await expect(page.getByTestId('feed-error')).toBeVisible();
@@ -190,7 +206,11 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
 
   test('FV04: a disconnected account shows the reconnect guidance with the manage link and no tiles', async ({ page }) => {
     await mockFeed(page, (route) =>
-      route.fulfill({ status: 410, json: { status: 'disconnected' }, headers: { 'Access-Control-Allow-Origin': '*' } })
+      route.fulfill({
+        status: 404,
+        json: { error: 'FEED_NOT_FOUND', status: 'disconnected', message: 'Nenhum feed público ativo para esta vitrine.' },
+        headers: CORS,
+      })
     );
     await page.goto(`${VITRINE_APP}/#/feed`);
     await expect(page.getByTestId('feed-disconnected')).toContainText('Conta desconectada');
@@ -200,7 +220,7 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
   });
 
   test('FV05: the footer strip shows synced items, and falls back to the labeled archive when Vitrine fails', async ({ page }) => {
-    await mockFeed(page, (route) => route.fulfill({ json: PAGE_ONE, headers: { 'Access-Control-Allow-Origin': '*' } }));
+    await mockFeed(page, (route) => route.fulfill({ json: PAGE_ONE, headers: CORS }));
     await page.goto(VITRINE_APP);
     await expect(page.getByTestId('instagram-strip-source')).toHaveText('FEED SINCRONIZADO VIA VITRINE');
     await expect(page.locator('[data-testid^="ig-strip-item-post-"]')).toHaveCount(4);
@@ -212,5 +232,44 @@ test.describe('Feed page — Vitrine adapter (mocked public projection)', () => 
       'FEED INDISPONÍVEL — EXIBINDO ARQUIVO ESTÁTICO, NÃO SINCRONIZADO'
     );
     await expect(page.locator('[data-testid^="ig-strip-item-ig-item-"]')).toHaveCount(6);
+  });
+
+  test('FV06: a stale projection stays visible but is labeled as the last valid sync, on the page and in the strip', async ({ page }) => {
+    await mockFeed(page, (route) =>
+      route.fulfill({ json: { ...PAGE_TWO, status: 'stale', stale: true, syncedAt: '2026-11-13T09:30:00.000Z' }, headers: CORS })
+    );
+    await page.goto(`${VITRINE_APP}/#/feed`);
+    await expect(page.getByTestId('feed-source-badge')).toHaveText('ÚLTIMA SINCRONIZAÇÃO VÁLIDA — DESATUALIZADO');
+    await expect(page.getByTestId('feed-source-note')).toContainText('mantém a última versão válida');
+    await expect(page.locator('[data-testid^="feed-tile-post-"]')).toHaveCount(2);
+    await assertZeroBorderRadius(page.getByTestId('feed-source-badge'));
+
+    await page.goto(VITRINE_APP);
+    await expect(page.getByTestId('instagram-strip-source')).toHaveText(
+      'FEED DO VITRINE — ÚLTIMA SINCRONIZAÇÃO VÁLIDA, DESATUALIZADO'
+    );
+  });
+
+  test('FV07: a projection from another storefront is never rendered', async ({ page }) => {
+    await mockFeed(page, (route) =>
+      route.fulfill({ json: { ...PAGE_TWO, slug: 'loja2', profile: { username: 'loja2.exemplo' } }, headers: CORS })
+    );
+    await page.goto(`${VITRINE_APP}/#/feed`);
+    await expect(page.getByTestId('feed-error')).toBeVisible();
+    await expect(page.locator('[data-testid^="feed-tile-post-"]')).toHaveCount(0);
+    await expect(page.getByText('loja2.exemplo')).toHaveCount(0);
+  });
+
+  test('FV08: INVALID_CURSOR on "Carregar mais" keeps the loaded posts and reports the failure', async ({ page }) => {
+    await mockFeed(page, (route, cursor) =>
+      cursor
+        ? route.fulfill({ status: 400, json: { error: 'INVALID_CURSOR' }, headers: CORS })
+        : route.fulfill({ json: PAGE_ONE, headers: CORS })
+    );
+    await page.goto(`${VITRINE_APP}/#/feed`);
+    await expect(page.locator('[data-testid^="feed-tile-post-"]')).toHaveCount(4);
+    await page.getByTestId('feed-load-more').click();
+    await expect(page.getByTestId('feed-load-more-error')).toBeVisible();
+    await expect(page.locator('[data-testid^="feed-tile-post-"]')).toHaveCount(4);
   });
 });

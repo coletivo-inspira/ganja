@@ -26,19 +26,23 @@ interface StripView {
   source: FeedSourceKind;
   label: string;
   loading: boolean;
+  stale: boolean;
   items: FeedItem[];
 }
 
 /** The footer never sits empty: if Vitrine fails, it falls back to the archive and says so. */
 function stripView(state: FeedState): StripView {
   if (state.status === 'loading') {
-    return { source: state.source, label: 'CARREGANDO FEED DO VITRINE…', loading: true, items: [] };
+    return { source: state.source, label: 'CARREGANDO FEED DO VITRINE…', loading: true, stale: false, items: [] };
   }
   if (state.status === 'ready' && state.source === 'vitrine') {
     return {
       source: 'vitrine',
-      label: 'FEED SINCRONIZADO VIA VITRINE',
+      label: state.stale
+        ? 'FEED DO VITRINE — ÚLTIMA SINCRONIZAÇÃO VÁLIDA, DESATUALIZADO'
+        : 'FEED SINCRONIZADO VIA VITRINE',
       loading: false,
+      stale: state.stale,
       items: state.items.slice(0, STRIP_SIZE),
     };
   }
@@ -50,6 +54,7 @@ function stripView(state: FeedState): StripView {
         ? 'ARQUIVO ESTÁTICO — NÃO SINCRONIZADO COM O INSTAGRAM'
         : 'FEED INDISPONÍVEL — EXIBINDO ARQUIVO ESTÁTICO, NÃO SINCRONIZADO',
     loading: false,
+    stale: false,
     items: archive.slice(0, STRIP_SIZE),
   };
 }
@@ -135,8 +140,13 @@ export const CreatorContactFooter: React.FC<CreatorContactFooterProps> = ({ feed
           <span
             data-testid="instagram-strip-source"
             data-feed-source={strip.source}
+            data-feed-stale={strip.stale ? 'true' : undefined}
             className={`px-2.5 py-1 border border-[#111111] ${
-              strip.source === 'vitrine' ? 'bg-[#008055] text-[#FFFFFF]' : 'bg-[#F5C400] text-[#111111]'
+              strip.stale
+                ? 'bg-[#FFFFFF] text-[#111111]'
+                : strip.source === 'vitrine'
+                  ? 'bg-[#008055] text-[#FFFFFF]'
+                  : 'bg-[#F5C400] text-[#111111]'
             }`}
           >
             {strip.label}

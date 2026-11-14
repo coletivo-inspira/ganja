@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "slug": "ganja",
+  "status": "stale",
+  "revision": 14,
+  "hash": "8f3c2d91a4b7e605c1209d4e8b7a6f5123456789abcdef0123456789abcdef01",
+  "syncedAt": "2026-11-11T15:00:00.000Z",
+  "profile": {
+    "username": "ganjastudio.br",
+    "displayName": "Ganja Studio",
+    "profileUrl": "https://www.instagram.com/ganjastudio.br/",
+    "avatarUrl": "https://scontent.cdninstagram.com/v/t51.2885-19/exemplo-avatar.jpg"
+  },
+  "pageInfo": {
+    "limit": 3,
+    "hasNextPage": false,
+    "nextCursor": null
+  },
+  "items": [
+    {
+      "id": "17929384756102850",
+      "mediaType": "IMAGE",
+      "mediaUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/look-09.jpg",
+      "caption": "Look 09, projeto autoral.",
+      "permalink": "https://www.instagram.com/p/DCyA1s2D3f4/",
+      "publishedAt": "2026-11-08T10:00:00.000Z"
+    },
+    {
+      "id": "17929384756102811",
+      "mediaType": "IMAGE",
+      "mediaUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/arquivo.jpg",
+      "permalink": "https://www.instagram.com/p/DCxZ9x8C7v6/",
+      "publishedAt": "2026-11-07T09:15:00.000Z"
+    }
+  ],
+  "stale": true
+}
