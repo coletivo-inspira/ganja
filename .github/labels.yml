@@ -1,0 +1,64 @@
+# Fonte única das labels do repositório, sincronizada por .github/workflows/labels.yml.
+# A sincronização cria e atualiza labels, mas nunca apaga labels que não estejam aqui.
+
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+- name: duplicate
+  color: cfd3d7
+  description: This issue or pull request already exists
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers
+- name: help wanted
+  color: "008672"
+  description: Extra attention is needed
+- name: invalid
+  color: e4e669
+  description: This doesn't seem right
+- name: question
+  color: d876e3
+  description: Further information is requested
+- name: wontfix
+  color: ffffff
+  description: This will not be worked on
+- name: mobile
+  color: F5C400
+- name: ux
+  color: "111111"
+- name: interaction
+  color: 1A1A1A
+- name: accessibility
+  color: 5319E7
+- name: feature
+  color: 1D76DB
+- name: business-logic
+  color: B60205
+- name: catalog
+  color: C5DEF5
+- name: performance
+  color: FBCA04
+- name: ui-brutalism
+  color: 0D0D0D
+- name: ready-for-agent
+  color: 0E8A16
+  description: PRD revisado e disponível para execução por agente
+
+- name: instagram
+  color: E1306C
+  description: Feed Instagram e integração com a conta da marca
+- name: blocked
+  color: "000000"
+  description: Bloqueada por dependência externa ou decisão pendente
+- name: release
+  color: D92B2B
+  description: Versionamento, changelog e publicação de releases
+- name: vitrine-dependency
+  color: FF6B00
+  description: Depende de entrega no repositório coletivo-inspira/vitrine

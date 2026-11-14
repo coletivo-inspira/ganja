@@ -1,0 +1,75 @@
+name: Sync labels
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/labels.yml
+      - .github/workflows/labels.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: labels
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync labels from .github/labels.yml
+        uses: EndBug/label-sync@v2
+        with:
+          config-file: .github/labels.yml
+          delete-other-labels: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  apply:
+    needs: sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply labels to open issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Only adds labels; never removes labels someone set by hand.
+            const labelsByIssue = {
+              4: ['instagram', 'vitrine-dependency'],
+              5: ['instagram', 'vitrine-dependency'],
+              6: ['instagram', 'vitrine-dependency', 'blocked'],
+              17: ['instagram', 'vitrine-dependency'],
+            };
+            const { owner, repo } = context.repo;
+
+            for (const [number, wanted] of Object.entries(labelsByIssue)) {
+              const issue_number = Number(number);
+              let issue;
+              try {
+                ({ data: issue } = await github.rest.issues.get({ owner, repo, issue_number }));
+              } catch (error) {
+                if (error.status === 404) {
+                  core.warning(`#${issue_number} not found, skipping`);
+                  continue;
+                }
+                throw error;
+              }
+              if (issue.state !== 'open') {
+                core.info(`#${issue_number} is ${issue.state}, skipping`);
+                continue;
+              }
+              const current = new Set(issue.labels.map((label) => label.name));
+              const missing = wanted.filter((name) => !current.has(name));
+              if (missing.length === 0) {
+                core.info(`#${issue_number} already has ${wanted.join(', ')}`);
+                continue;
+              }
+              await github.rest.issues.addLabels({ owner, repo, issue_number, labels: missing });
+              core.info(`#${issue_number} + ${missing.join(', ')}`);
+            }
