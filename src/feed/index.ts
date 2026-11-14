@@ -1,6 +1,6 @@
 export * from './types';
 export { StaticFeedSource, STATIC_PROFILE, stripItemToFeedItem } from './staticFeedSource';
-export { VitrineFeedSource, safeInstagramUrl, safeMediaUrl } from './vitrineFeedSource';
+export { VitrineFeedSource, safeInstagramUrl, safeMediaUrl, slugFromEndpoint } from './vitrineFeedSource';
 export {
   createFeedSource,
   getDefaultFeedSource,

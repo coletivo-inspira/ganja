@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "slug": "loja2",
+  "status": "active",
+  "revision": 3,
+  "hash": "1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f809",
+  "syncedAt": "2026-11-12T15:00:00.000Z",
+  "profile": {
+    "username": "loja2.exemplo",
+    "profileUrl": "https://www.instagram.com/loja2.exemplo/"
+  },
+  "pageInfo": {
+    "limit": 12,
+    "hasNextPage": false,
+    "nextCursor": null
+  },
+  "items": [
+    {
+      "id": "18000000000000001",
+      "mediaType": "IMAGE",
+      "mediaUrl": "https://scontent.cdninstagram.com/v/t51.29350-15/loja2.jpg",
+      "permalink": "https://www.instagram.com/p/LOJA2AAA/",
+      "publishedAt": "2026-11-12T08:00:00.000Z"
+    }
+  ]
+}

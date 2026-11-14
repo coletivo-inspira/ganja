@@ -11,6 +11,7 @@ export interface FeedState {
   items: FeedItem[];
   nextCursor: string | null;
   syncedAt: string | null;
+  stale: boolean;
   loadingMore: boolean;
   loadMoreFailed: boolean;
 }
@@ -23,6 +24,7 @@ function fromPage(page: FeedPage): FeedState {
     items: page.items,
     nextCursor: page.nextCursor,
     syncedAt: page.syncedAt ?? null,
+    stale: page.stale ?? false,
     loadingMore: false,
     loadMoreFailed: false,
   };
@@ -38,6 +40,7 @@ function initialState(source: FeedSource): FeedState {
     items: [],
     nextCursor: null,
     syncedAt: null,
+    stale: false,
     loadingMore: false,
     loadMoreFailed: false,
   };
@@ -95,6 +98,7 @@ export function useFeed(source: FeedSource) {
         items: [...prev.items, ...fresh],
         nextCursor: page.nextCursor,
         syncedAt: page.syncedAt ?? prev.syncedAt,
+        stale: page.stale ?? prev.stale,
         loadingMore: false,
       }));
       return fresh;

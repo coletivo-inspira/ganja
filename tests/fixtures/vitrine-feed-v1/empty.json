@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "slug": "ganja",
+  "status": "empty",
+  "revision": 14,
+  "hash": "8f3c2d91a4b7e605c1209d4e8b7a6f5123456789abcdef0123456789abcdef01",
+  "syncedAt": "2026-11-12T15:00:00.000Z",
+  "profile": {
+    "username": "ganjastudio.br",
+    "displayName": "Ganja Studio",
+    "profileUrl": "https://www.instagram.com/ganjastudio.br/",
+    "avatarUrl": "https://scontent.cdninstagram.com/v/t51.2885-19/exemplo-avatar.jpg"
+  },
+  "pageInfo": {
+    "limit": 12,
+    "hasNextPage": false,
+    "nextCursor": null
+  },
+  "items": []
+}

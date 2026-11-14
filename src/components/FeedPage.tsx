@@ -10,13 +10,18 @@ export interface FeedPageProps {
   manageUrl?: string;
 }
 
-function sourceBadge(source: FeedSourceKind, status: FeedStatus): { label: string; className: string } {
+function sourceBadge(
+  source: FeedSourceKind,
+  status: FeedStatus,
+  stale: boolean
+): { label: string; className: string } {
   if (source === 'static') {
     return { label: 'ARQUIVO ESTÁTICO — NÃO SINCRONIZADO', className: 'bg-[#F5C400] text-[#111111]' };
   }
   if (status === 'loading') return { label: 'CONSULTANDO O VITRINE…', className: 'bg-[#FFFFFF] text-[#111111]' };
   if (status === 'error') return { label: 'VITRINE INDISPONÍVEL', className: 'bg-[#FFFFFF] text-[#111111]' };
   if (status === 'disconnected') return { label: 'CONTA DESCONECTADA', className: 'bg-[#111111] text-[#F5C400]' };
+  if (stale) return { label: 'ÚLTIMA SINCRONIZAÇÃO VÁLIDA — DESATUALIZADO', className: 'bg-[#FFFFFF] text-[#111111]' };
   return { label: 'SINCRONIZADO VIA VITRINE', className: 'bg-[#008055] text-[#FFFFFF]' };
 }
 
@@ -78,13 +83,14 @@ export const FeedPage: React.FC<FeedPageProps> = ({ source, manageUrl }) => {
   const isStatic = state.source === 'static';
   const handle = state.profile?.handle ?? '@ganjastudio.br';
   const syncedAt = formatFeedDate(state.syncedAt);
-  const badge = sourceBadge(state.source, state.status);
+  const badge = sourceBadge(state.source, state.status, state.stale);
 
   return (
     <div
       data-testid="feed-page"
       data-feed-source={state.source}
       data-feed-status={state.status}
+      data-feed-stale={state.stale ? 'true' : undefined}
       className="min-h-screen w-full bg-[#F4F3EF] text-[#111111]"
     >
       <header className="feed-topbar sticky top-0 z-[60] grid grid-cols-2 sm:grid-cols-[auto_1fr_auto] bg-[#F4F3EF] border-b border-[#111111]">
@@ -141,6 +147,10 @@ export const FeedPage: React.FC<FeedPageProps> = ({ source, manageUrl }) => {
                 ? 'Estas imagens são um arquivo fixo, curado à mão no código do site. Não é o feed sincronizado do Instagram: a sincronização depende da conexão autorizada pelo dono no Vitrine.'
                 : `O feed vem da projeção pública do Vitrine, sincronizada periodicamente — não em tempo real.${
                     syncedAt ? ` Última sincronização: ${syncedAt}.` : ''
+                  }${
+                    state.stale
+                      ? ' A sincronização mais recente falhou; o Vitrine mantém a última versão válida até o próximo ciclo.'
+                      : ''
                   }`}
             </p>
             <p id="feed-manage-note" className="lg:col-span-5 lg:border-l border-[#111111] lg:pl-5">
