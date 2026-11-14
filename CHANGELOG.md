@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/coletivo-inspira/ganja/compare/v1.0.0...v1.0.1) (2026-11-14)
+
+
+### Correções
+
+* **ci:** corrigir cores dos labels como string ([#25](https://github.com/coletivo-inspira/ganja/issues/25)) ([57654e9](https://github.com/coletivo-inspira/ganja/commit/57654e94a982ad671a6f1ea88dadb31acfd59130))
+
 ## 1.0.0 (2026-11-14)
 
 
