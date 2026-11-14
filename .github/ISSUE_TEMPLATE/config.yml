@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Integração Instagram no Vitrine
+    url: https://github.com/coletivo-inspira/vitrine/issues
+    about: Autorização, sincronização e contrato público do feed ficam no repositório Vitrine.
