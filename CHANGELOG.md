@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/coletivo-inspira/ganja/compare/v1.0.1...v1.1.0) (2026-11-14)
+
+
+### Novidades
+
+* **feed:** ler o contrato schemaVersion 1 do Vitrine e preparar o piloto Instagram ([#27](https://github.com/coletivo-inspira/ganja/issues/27)) ([a80a5e2](https://github.com/coletivo-inspira/ganja/commit/a80a5e2028ac1c0f8a0b15c93f6dac0da8d1bd26))
+
 ## [1.0.1](https://github.com/coletivo-inspira/ganja/compare/v1.0.0...v1.0.1) (2026-11-14)
 
 
