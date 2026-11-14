@@ -1,10 +1,10 @@
 # Piloto Instagram da Ganja
 
-Data: 12/11/2026. Status: planejamento documental; nenhuma integração ou configuração de produção implementada.
+Data: 12/11/2026, atualizado em 14/11/2026. Status: o lado Ganja está implementado com o arquivo estático (ver "Entregue na Ganja"). Nenhuma conexão real com o Instagram existe; o feed sincronizado espera o Vitrine, a começar por [vitrine #48](https://github.com/coletivo-inspira/vitrine/issues/48).
 
 ## Objetivo e ponto de partida
 
-Exibir o feed autorizado de @ganjastudio.br e permitir que o dono gerencie a conexão no painel Vitrine. Hoje, a faixa usa INSTAGRAM_STRIP_ITEMS em src/data/creator.ts, renderizada em src/components/CreatorContactFooter.tsx; são imagens fixas, não sincronização Instagram.
+Exibir o feed autorizado de @ganjastudio.br e permitir que o dono gerencie a conexão no painel Vitrine. A faixa partiu de INSTAGRAM_STRIP_ITEMS em src/data/creator.ts, renderizada em src/components/CreatorContactFooter.tsx. São imagens fixas, não sincronização Instagram, e agora o site diz isso na própria faixa.
 
 ## Caminho das pedras
 
@@ -14,6 +14,41 @@ Exibir o feed autorizado de @ganjastudio.br e permitir que o dono gerencie a con
 4. Planejar página pública do feed com paginação e acesso pelo menu. Prever link de gestão para painel.inspira.dev.br, com destino da vitrine validado na implementação; o painel exige login e autorização.
 5. Definir carregamento, estado vazio, falha temporária e desconexão. Não apresentar material estático como conteúdo sincronizado.
 6. Executar o piloto somente após implementar as dependências e confirmar liberação Meta aplicável.
+
+## Entregue na Ganja (14/11/2026)
+
+Fecha [ganja #4](https://github.com/coletivo-inspira/ganja/issues/4) e [ganja #5](https://github.com/coletivo-inspira/ganja/issues/5) e cobre os módulos Ganja do PRD [ganja #17](https://github.com/coletivo-inspira/ganja/issues/17).
+
+- **Adaptador `src/feed/`.** A interface `FeedSource` tem `getPage(cursor)`, que devolve perfil, publicações e `nextCursor`. `StaticFeedSource` monta as páginas a partir de `INSTAGRAM_STRIP_ITEMS`. `VitrineFeedSource` só é usado quando `VITE_VITRINE_FEED_URL` está definida no build. Ele faz um `GET` sem credenciais (`credentials: 'omit'`), sem cabeçalho `Authorization` e sem token. Mídias só aceitam http(s), e os links originais só aceitam `https://*.instagram.com`; fora disso, o link vai para o perfil.
+- **Faixa do rodapé.** A faixa lê pelo adaptador. Com o arquivo estático, o selo diz "ARQUIVO ESTÁTICO — NÃO SINCRONIZADO COM O INSTAGRAM". Com o Vitrine, diz "FEED SINCRONIZADO VIA VITRINE". Se o Vitrine falhar ou a conta estiver desconectada, a faixa volta ao arquivo e diz "FEED INDISPONÍVEL — EXIBINDO ARQUIVO ESTÁTICO, NÃO SINCRONIZADO". O botão "VER FEED COMPLETO" leva a `#/feed`. A página é acessada por esse botão. O índice do cabeçalho continua com as sete células atuais; incluir o feed ali é uma decisão de design ainda em aberto.
+- **Página `#/feed`.** A rota por hash dispensa reescrita de URL no GitHub Pages. A página tem paginação por cursor ("Carregar mais", sem duplicar publicações), cartões de foto, carrossel (com número de mídias) e capa de vídeo (sem reprodução automática), e links para a publicação original em nova aba. Os estados são carregando, vazio, falha (com "Tentar novamente"), falha ao carregar mais (as publicações já exibidas ficam) e conta desconectada. O selo de origem acompanha o estado: arquivo estático, consultando, sincronizado, indisponível ou desconectado.
+- **Gestão.** "Gerenciar no Vitrine" abre `https://painel.inspira.dev.br/`, que pode ser trocado por `VITE_VITRINE_MANAGE_URL`. O texto ao lado avisa que o painel exige login e autorização do dono e que o link não concede acesso por si só.
+- **Teclado e celular.** O foco vai para o título quando a página abre e para a primeira publicação nova depois de "Carregar mais". Todos os links e botões têm contorno visível. Em 390 px a grade tem duas colunas, sem rolagem horizontal. O visual segue o brutalismo do site: raio 0, sem blur, borda de 1 px `#111111`, sombra dura de 4 px, Syne e Space Mono.
+- **Testes.** `src/__tests__/feedSource.test.ts` e `src/__tests__/feedPage.test.tsx` (unitários) e `tests/e2e/feed-page.spec.ts` (Playwright). O Playwright roda o site sem a variável e uma segunda instância com `VITE_VITRINE_FEED_URL` apontando para um host simulado. Contagens em `TEST_READY.md`.
+
+### Contrato provisório esperado do Vitrine
+
+Este é o formato que `VitrineFeedSource` lê hoje. Deve ser confirmado ou ajustado em [vitrine #51](https://github.com/coletivo-inspira/vitrine/issues/51):
+
+```
+GET <VITE_VITRINE_FEED_URL>?limit=12&cursor=<opaco>
+200 { status: 'connected' | 'disconnected',
+      profile: { username, profileUrl?, name? },
+      items: [{ id, mediaType: 'IMAGE' | 'CAROUSEL_ALBUM' | 'VIDEO', mediaUrl?, thumbnailUrl?,
+                caption?, permalink, timestamp?, childrenCount? }],
+      nextCursor: string | null, syncedAt?: string }
+410 ou status 'disconnected' → conta desconectada; o dono reconecta no painel.
+```
+
+O endpoint precisa responder com CORS para `https://ganja.inspira.dev.br` e não pode exigir cookie nem token do navegador.
+
+## O que espera o Vitrine
+
+- [vitrine #48](https://github.com/coletivo-inspira/vitrine/issues/48): configuração Meta (app, permissões, revisão) e conta profissional confirmada. Bloqueia todo o resto.
+- [vitrine #49](https://github.com/coletivo-inspira/vitrine/issues/49): "Conectar Instagram" no painel, com o destino exato da vitrine Ganja. Quando ele existir, `VITE_VITRINE_MANAGE_URL` passa a apontar para esse destino.
+- [vitrine #50](https://github.com/coletivo-inspira/vitrine/issues/50): sincronização periódica, frequência e política de retenção, remoção e cache.
+- [vitrine #51](https://github.com/coletivo-inspira/vitrine/issues/51): contrato público final e URL de produção. Para ligar o feed real, basta definir `VITE_VITRINE_FEED_URL` no workflow do Pages. Nenhum segredo entra no build.
+- [ganja #6](https://github.com/coletivo-inspira/ganja/issues/6) continua aberta. O piloto com a conta real roda o roteiro abaixo depois que essas dependências existirem.
 
 ## Premissas e limites
 
@@ -43,7 +78,7 @@ Sequência: Meta → conexão no painel → sincronização → interface públi
 - [ ] Usuário de outra vitrine não lê credenciais nem altera a integração; navegador e logs não expõem tokens.
 - [ ] Página, paginação e acesso à gestão funcionam em celular e por teclado.
 
-Estes são cenários a executar após a implementação, não resultados de testes já realizados. Registrar evidências e bloqueios na issue Ganja #6.
+Estes cenários dependem do Vitrine real e continuam pendentes. Os testes da Ganja simulam o contrato provisório e não substituem o piloto. Registrar evidências e bloqueios na issue Ganja #6.
 
 ## Pendências e referência
 

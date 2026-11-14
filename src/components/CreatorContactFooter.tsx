@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
-import { CREATOR_PROFILE, INSTAGRAM_STRIP_ITEMS } from '../data/creator';
+import { CREATOR_PROFILE } from '../data/creator';
+import { FEED_HASH, getDefaultFeedSource, StaticFeedSource, useFeed } from '../feed';
+import type { FeedItem, FeedSource, FeedSourceKind, FeedState } from '../feed';
 import { withBase } from '../withBase';
+import { feedTypeLabel } from './FeedTile';
 
 const INSPIRA_ORB_SRC = 'https://brandbook.inspira.dev.br/assets/js/inspira-orb.js';
 
@@ -16,7 +19,49 @@ function loadInspiraOrb(): void {
   document.body.appendChild(script);
 }
 
-export const CreatorContactFooter: React.FC = () => {
+const STRIP_SIZE = 6;
+const STATIC_ARCHIVE = new StaticFeedSource();
+
+interface StripView {
+  source: FeedSourceKind;
+  label: string;
+  loading: boolean;
+  items: FeedItem[];
+}
+
+/** The footer never sits empty: if Vitrine fails, it falls back to the archive and says so. */
+function stripView(state: FeedState): StripView {
+  if (state.status === 'loading') {
+    return { source: state.source, label: 'CARREGANDO FEED DO VITRINE…', loading: true, items: [] };
+  }
+  if (state.status === 'ready' && state.source === 'vitrine') {
+    return {
+      source: 'vitrine',
+      label: 'FEED SINCRONIZADO VIA VITRINE',
+      loading: false,
+      items: state.items.slice(0, STRIP_SIZE),
+    };
+  }
+  const archive = state.source === 'static' ? state.items : STATIC_ARCHIVE.snapshot().items;
+  return {
+    source: 'static',
+    label:
+      state.source === 'static'
+        ? 'ARQUIVO ESTÁTICO — NÃO SINCRONIZADO COM O INSTAGRAM'
+        : 'FEED INDISPONÍVEL — EXIBINDO ARQUIVO ESTÁTICO, NÃO SINCRONIZADO',
+    loading: false,
+    items: archive.slice(0, STRIP_SIZE),
+  };
+}
+
+export interface CreatorContactFooterProps {
+  feedSource?: FeedSource;
+}
+
+export const CreatorContactFooter: React.FC<CreatorContactFooterProps> = ({ feedSource }) => {
+  const { state } = useFeed(feedSource ?? getDefaultFeedSource());
+  const strip = stripView(state);
+
   useEffect(() => {
     loadInspiraOrb();
   }, []);
@@ -86,31 +131,65 @@ export const CreatorContactFooter: React.FC = () => {
           <span className="text-[#D92B2B]">TRANSIÇÃO SECA INSTANTÂNEA (0MS)</span>
         </div>
 
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 font-mono-tech text-[11px] font-bold">
+          <span
+            data-testid="instagram-strip-source"
+            data-feed-source={strip.source}
+            className={`px-2.5 py-1 border border-[#111111] ${
+              strip.source === 'vitrine' ? 'bg-[#008055] text-[#FFFFFF]' : 'bg-[#F5C400] text-[#111111]'
+            }`}
+          >
+            {strip.label}
+          </span>
+          <a
+            href={FEED_HASH}
+            data-testid="instagram-strip-feed-link"
+            className="feed-action px-3 py-2 bg-[#111111] text-[#F4F3EF] brutal-border brutal-shadow"
+          >
+            VER FEED COMPLETO →
+          </a>
+        </div>
+
         <div
           data-testid="instagram-contact-strip"
+          data-feed-source={strip.source}
+          aria-busy={strip.loading}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4"
         >
-          {INSTAGRAM_STRIP_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              data-testid={`ig-strip-item-${item.id}`}
-              href={item.permalink}
-              target="_blank"
-              rel="noreferrer"
-              className="block bg-[#F4F3EF] brutal-border brutal-shadow p-2 ig-strip-filter"
-              style={{ borderRadius: '0px' }}
-            >
-              <div className="font-mono-tech text-[10px] font-bold pb-1 mb-1 border-b border-[#111111] truncate">
-                {item.tag}
-              </div>
-              <img
-                src={item.imagePath}
-                alt={item.caption}
-                className="w-full aspect-[4/5] object-cover border border-[#111111]"
-              />
-              <div className="font-mono-tech text-[10px] mt-1.5 line-clamp-2">{item.caption}</div>
-            </a>
-          ))}
+          {strip.loading
+            ? Array.from({ length: STRIP_SIZE }, (_, idx) => (
+                <div
+                  key={idx}
+                  aria-hidden="true"
+                  data-testid="ig-strip-skeleton"
+                  className="bg-[#F4F3EF] brutal-border brutal-shadow p-2"
+                >
+                  <div className="h-4 mb-1 border-b border-[#111111]" />
+                  <div className="w-full aspect-[4/5] border border-[#111111] texture-halftone opacity-30" />
+                </div>
+              ))
+            : strip.items.map((item) => (
+                <a
+                  key={item.id}
+                  data-testid={`ig-strip-item-${item.id}`}
+                  data-media-type={item.type}
+                  href={item.permalink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block bg-[#F4F3EF] brutal-border brutal-shadow p-2 ig-strip-filter"
+                  style={{ borderRadius: '0px' }}
+                >
+                  <div className="font-mono-tech text-[10px] font-bold pb-1 mb-1 border-b border-[#111111] truncate">
+                    {item.tag ?? feedTypeLabel(item)}
+                  </div>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.caption}
+                    className="w-full aspect-[4/5] object-cover border border-[#111111]"
+                  />
+                  <div className="font-mono-tech text-[10px] mt-1.5 line-clamp-2">{item.caption}</div>
+                </a>
+              ))}
         </div>
       </div>
 

@@ -9,8 +9,11 @@ import { StageProofSection } from './components/StageProofSection';
 import { DualArchitectureSection } from './components/DualArchitectureSection';
 import { LookbookSection } from './components/LookbookSection';
 import { CreatorContactFooter } from './components/CreatorContactFooter';
+import { FeedPage } from './components/FeedPage';
+import { useHashRoute } from './feed';
 
 export const App: React.FC = () => {
+  const route = useHashRoute();
   const lenisRef = useRef<Lenis | null>(null);
   const [activeSectionId, setActiveSectionId] = useState<string>('hero-00');
 
@@ -78,23 +81,38 @@ export const App: React.FC = () => {
     }
   }, []);
 
+  const previousRouteRef = useRef(route);
+  useEffect(() => {
+    if (previousRouteRef.current === route) return;
+    previousRouteRef.current = route;
+    lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+    window.scrollTo(0, 0);
+  }, [route]);
+
   return (
     <div
       data-testid="ganja-app-shell"
+      data-route={route}
       className="min-h-screen w-full bg-[#F4F3EF] text-[#111111] relative"
       style={{ borderRadius: '0px' }}
     >
       <CustomCursor />
-      <StickyHeader onNavigate={handleNavigate} activeSectionId={activeSectionId} />
+      {route === 'feed' ? (
+        <FeedPage />
+      ) : (
+        <>
+          <StickyHeader onNavigate={handleNavigate} activeSectionId={activeSectionId} />
 
-      <main role="main" className="w-full">
-        <HeroSection />
-        <OriginManifestoSection />
-        <StageProofSection />
-        <DualArchitectureSection />
-        <LookbookSection />
-        <CreatorContactFooter />
-      </main>
+          <main role="main" className="w-full">
+            <HeroSection />
+            <OriginManifestoSection />
+            <StageProofSection />
+            <DualArchitectureSection />
+            <LookbookSection />
+            <CreatorContactFooter />
+          </main>
+        </>
+      )}
     </div>
   );
 };
